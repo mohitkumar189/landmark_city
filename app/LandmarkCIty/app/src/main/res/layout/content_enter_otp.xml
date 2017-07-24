@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp40"
+            android:paddingRight="@dimen/dp40">
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="@dimen/logo_width"
+                android:layout_height="@dimen/logo_height"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="55dp"
+                android:padding="@dimen/dp8"
+                android:scaleType="fitXY"
+                android:src="@drawable/land_logo" />
+
+            <LinearLayout
+                android:id="@+id/relativeLogin"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/iv"
+                android:layout_marginTop="@dimen/dp28"
+                android:background="@drawable/edit_text_background"
+                android:orientation="horizontal"
+                android:padding="@dimen/dp2"
+                android:weightSum="4">
+
+                <EditText
+                    android:id="@+id/editDigit1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:gravity="center"
+                    android:hint="*"
+                    android:maxLength="1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/font_16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editDigit2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:gravity="center"
+                    android:hint="*"
+                    android:maxLength="1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/font_16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editDigit3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:gravity="center"
+                    android:hint="*"
+                    android:maxLength="1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/font_16"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editDigit4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:gravity="center"
+                    android:hint="*"
+                    android:maxLength="1"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/font_16"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnVerify"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp36"
+                android:layout_below="@+id/relativeLogin"
+                android:layout_marginTop="@dimen/dp16"
+                android:background="@color/btn_background"
+                android:text="Verify"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvResend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Resend"
+                android:layout_marginTop="@dimen/dp12"
+                android:layout_below="@+id/btnVerify"
+                android:textSize="@dimen/font_16"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
