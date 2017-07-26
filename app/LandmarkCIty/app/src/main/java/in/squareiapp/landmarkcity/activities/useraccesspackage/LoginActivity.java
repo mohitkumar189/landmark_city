@@ -151,6 +151,7 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
                     startNewActivity(currentActivity, OtpEnterActivity.class, bundle, false, 0, false, 0);
                     finish();
                 } else {
+                    Logger.info(TAG, "saving api key===::" + apikey);
                     SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.CLIENT_ID, apikey);
                     SharedPrefUtils.getInstance(context).putBoolean(SharedPrefUtils.LOGIN_STATUS, true);
                     startNewActivity(currentActivity, UserDashboardActivity.class);
