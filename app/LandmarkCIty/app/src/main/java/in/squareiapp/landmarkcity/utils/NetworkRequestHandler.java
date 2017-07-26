@@ -36,11 +36,11 @@ public class NetworkRequestHandler {
     public static NetworkRequestHandler getInstance(Context context, NetworkResponseListener networkResponseListener) {
 
         NetworkRequestHandler.networkResponseListener = networkResponseListener;
-
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage(dialogMessage);
-        progressDialog.setCancelable(true);
-
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage(dialogMessage);
+            progressDialog.setCancelable(true);
+        }
         return new NetworkRequestHandler();
     }
 
@@ -132,7 +132,7 @@ public class NetworkRequestHandler {
 
         showProgressDialog(progressDialog);
 
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(requestMethod, requestUrl, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(requestMethod, requestUrl, new JSONObject(postParams), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 Logger.info(TAG, "==>Response API<==:: " + requestUrl + " ===> " + response);
@@ -186,6 +186,11 @@ public class NetworkRequestHandler {
             }
         }) {
             @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded; charset=UTF-8";
+            }
+
+            @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
 
@@ -212,7 +217,8 @@ public class NetworkRequestHandler {
     private void dismissProgressDiialog(ProgressDialog pd) {
         if (pd != null && pd.isShowing()) {
             Logger.debug(TAG, "==>Dismissing progress dialog<==");
-            pd.dismiss();
+            pd.cancel();
+            progressDialog = null;
         }
     }
 

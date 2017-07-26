@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
+    android:fitsSystemWindows="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -62,6 +63,8 @@
                     android:layout_toRightOf="@+id/view3"
                     android:background="@android:color/transparent"
                     android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/font_14" />
             </RelativeLayout>
@@ -102,6 +105,8 @@
                     android:layout_toRightOf="@+id/view1"
                     android:background="@android:color/transparent"
                     android:hint="@string/hint_user_name"
+                    android:inputType="text"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/font_14" />
             </RelativeLayout>
@@ -141,6 +146,9 @@
                     android:layout_toRightOf="@+id/view2"
                     android:background="@android:color/transparent"
                     android:hint="@string/hintPassword"
+                    android:inputType="textPassword"
+                    android:maxLength="20"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/font_14" />
             </RelativeLayout>
@@ -182,6 +190,7 @@
                     android:background="@android:color/transparent"
                     android:editable="false"
                     android:hint="Usertype"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/font_14" />
 

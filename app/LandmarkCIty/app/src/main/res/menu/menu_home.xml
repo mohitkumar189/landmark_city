@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/profile_48"
+        android:title="Profile" />
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/chat_48"
+        android:title="Chat" />
+    <item
+        android:id="@+id/nav_music"
+        android:icon="@drawable/music_48"
+        android:title="Music" />
+    <item
+        android:id="@+id/nav_map"
+        android:icon="@drawable/maps_48"
+        android:title="Map" />
+    <item
+        android:id="@+id/nav_rewards"
+        android:icon="@drawable/rewards_48"
+        android:title="Rewards" />
+    <item
+        android:id="@+id/nav_store"
+        android:icon="@drawable/shop_48"
+        android:title="Store" />
+    <item
+        android:id="@+id/nav_greetings"
+        android:icon="@drawable/greetings_48"
+        android:title="Greetings" />
+    <item
+        android:id="@+id/nav_share_location"
+        android:icon="@drawable/share_location_48"
+        android:title="Share Location" />
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/settings_48"
+        android:title="Settings" />
+
+</menu>

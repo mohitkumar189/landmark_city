@@ -62,6 +62,8 @@
                     android:layout_toRightOf="@+id/view1"
                     android:background="@android:color/transparent"
                     android:hint="@string/hint_user_name"
+                    android:inputType="text"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/font_14" />
             </RelativeLayout>
@@ -100,7 +102,9 @@
                     android:layout_centerVertical="true"
                     android:layout_toRightOf="@+id/view2"
                     android:background="@android:color/transparent"
-                    android:hint="@string/hint_user_name"
+                    android:hint="@string/hintPassword"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
                     android:textColorHint="@color/text_hint"
                     android:textSize="@dimen/font_14" />
             </RelativeLayout>

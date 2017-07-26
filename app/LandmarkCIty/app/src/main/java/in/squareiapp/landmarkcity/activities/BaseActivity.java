@@ -97,7 +97,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         } else {
             time = Toast.LENGTH_SHORT;
         }
-        Toast.makeText(currentActivity, text, time).show();
+        Toast.makeText(context, text, time).show();
     }
 
     public void testingToast(String text, boolean isLengthLong) {

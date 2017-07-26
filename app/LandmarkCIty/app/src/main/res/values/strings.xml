@@ -4,4 +4,17 @@
     <string name="forgotPassword">Forgot Password?</string>
     <string name="registerText">Don\'t have account? Register now</string>
     <string name="hintPassword">Password</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navigation_drawer_open">drawer_open</string>
+    <string name="navigation_drawer_close">drawer closed</string>
+    <string name="error_phone_no_invalid">Mobile number length must be 10 digit</string>
+    <string name="error_additional_zero">Number can not have 0 in start</string>
+    <string name="error_invalid_password">Password length must be 4</string>
+    <string name="error_invalid_user_name">invalid user name</string>
+    <string name="enterFirstName">name can not be empty</string>
+    <string name="error_first_name">name can not be empty</string>
+    <string name="network_error">network error</string>
+    <string name="loginText">Sign in</string>
 </resources>

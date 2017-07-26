@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    app:cardCornerRadius="1dp"
+    app:elevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:paddingBottom="@dimen/dp4"
+        android:paddingTop="@dimen/dp4">
+
+        <ImageView
+            android:id="@+id/ivNewsImage"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/dp8"
+            android:scaleType="fitXY"
+            android:src="@drawable/news_pic"/>
+
+        <in.squareiapp.landmarkcity.custom_views.AppTextView
+            android:id="@+id/tvNews"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rel"
+            android:layout_toRightOf="@+id/ivNewsImage"
+            android:maxLines="4"
+            android:textColor="@color/text_dark_dark"
+            android:textSize="@dimen/font_12"
+            tools:text="This news is read at landmark city app and this is posted by Mohit Kumar verified by Rahmat, designed by Monika." />
+
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp2"
+            android:layout_toRightOf="@+id/ivNewsImage">
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvNewsDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_12"
+                tools:text="July 24" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="1dp"
+                android:layout_height="10dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp8"
+                android:layout_marginRight="@dimen/dp8"
+                android:layout_toRightOf="@+id/tvNewsDate"
+                android:background="@color/btn_background" />
+
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvNewsTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/view1"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_12"
+                tools:text="2:30 pm" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

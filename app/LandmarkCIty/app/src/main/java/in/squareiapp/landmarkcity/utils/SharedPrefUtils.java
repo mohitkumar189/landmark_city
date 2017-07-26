@@ -16,6 +16,11 @@ public class SharedPrefUtils {
     private static Context context;
     private static final String TAG = "SharedPrefUtils";
 
+    ////////////////////// Keys for shared preference ///////////////////////
+    public static final String LOGIN_STATUS = "islogin";
+    public static final String CLIENT_ID = "clientid";
+    public static final String USER_NAME = "username";
+
     private SharedPrefUtils() {
 
     }
@@ -24,7 +29,6 @@ public class SharedPrefUtils {
         if (sharedPreferenceUtils == null) {
             sharedPreferenceUtils = new SharedPrefUtils();
         }
-
         if (SharedPrefUtils.context == null) {
             SharedPrefUtils.context = context;
         }

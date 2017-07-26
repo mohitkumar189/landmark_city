@@ -9,6 +9,8 @@
     <color name="border_color">#d4d4d4</color>
     <color name="text_hint">#dbdbdb</color>
     <color name="text_dark">#666666</color>
+    <color name="text_dark_dark">#212121</color>
     <color name="text_light">#999999</color>
     <color name="btn_background">#63254e</color>
+    <color name="yellow">#e4c914</color>
 </resources>

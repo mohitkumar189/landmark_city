@@ -40,60 +40,54 @@
 
                 <EditText
                     android:id="@+id/editDigit1"
+                    style="@style/pin_edittext_style"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center"
-                    android:hint="*"
-                    android:maxLength="1"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="@dimen/font_16"
-                    android:textStyle="bold" />
+                    android:hint="*" />
 
                 <EditText
                     android:id="@+id/editDigit2"
+                    style="@style/pin_edittext_style"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center"
-                    android:hint="*"
-                    android:maxLength="1"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="@dimen/font_16"
-                    android:textStyle="bold" />
+                    android:hint="*" />
 
                 <EditText
                     android:id="@+id/editDigit3"
+                    style="@style/pin_edittext_style"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center"
-                    android:hint="*"
-                    android:maxLength="1"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="@dimen/font_16"
-                    android:textStyle="bold" />
+                    android:hint="*" />
 
                 <EditText
                     android:id="@+id/editDigit4"
+                    style="@style/pin_edittext_style"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:gravity="center"
+                    android:hint="*" />
+
+                <EditText
+                    android:id="@+id/editDigitHidden"
+                    style="@style/pin_edittext_style"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center"
                     android:hint="*"
-                    android:maxLength="1"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/black"
-                    android:textSize="@dimen/font_16"
-                    android:textStyle="bold" />
-
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -111,11 +105,11 @@
                 android:id="@+id/tvResend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Resend"
-                android:layout_marginTop="@dimen/dp12"
                 android:layout_below="@+id/btnVerify"
-                android:textSize="@dimen/font_16"/>
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp12"
+                android:text="Resend"
+                android:textSize="@dimen/font_16" />
 
 
         </RelativeLayout>

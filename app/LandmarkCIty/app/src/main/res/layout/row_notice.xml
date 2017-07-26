@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    app:cardCornerRadius="1dp"
+    app:elevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/relativeUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp8">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/profile"
+                app:civ_border_color="#eae8e8"
+                app:civ_border_width="1dp"
+                app:civ_shadow_color="#8BC34A" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/ivShare"
+                android:layout_toRightOf="@+id/ivProfile"
+                android:orientation="vertical"
+                android:padding="@dimen/dp8">
+
+                <in.squareiapp.landmarkcity.custom_views.AppTextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/font_14"
+                    tools:text="Mohit Kumar" />
+
+                <in.squareiapp.landmarkcity.custom_views.AppTextView
+                    android:id="@+id/tvPostTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_light"
+                    android:textSize="@dimen/font_10"
+                    tools:text="Landmark city, Rajsthan(kota)" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ivShare"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/dp4"
+                android:src="@drawable/share" />
+        </RelativeLayout>
+
+        <in.squareiapp.landmarkcity.custom_views.AppTextView
+            android:id="@+id/tvPostDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeUser"
+            android:maxLines="3"
+            android:padding="@dimen/dp8"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/font_14"
+            tools:text="This is the post at the time of posting for the landmark city kota. App is having too cool features." />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tvPostDescription">
+
+            <ImageView
+                android:id="@+id/ivPostImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/image_back" />
+
+            <ImageView
+                android:id="@+id/ivUpdateType"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/dp2"
+                tools:src="@drawable/video_icon" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#57000000"
+                android:padding="@dimen/dp8">
+
+                <in.squareiapp.landmarkcity.custom_views.AppTextView
+                    android:id="@+id/tvNewsDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/view1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_12"
+                    tools:text="July 24" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="1dp"
+                    android:layout_height="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp8"
+                    android:layout_marginRight="@dimen/dp8"
+                    android:layout_toLeftOf="@+id/tvNewsTime"
+                    android:background="@color/white" />
+
+
+                <in.squareiapp.landmarkcity.custom_views.AppTextView
+                    android:id="@+id/tvNewsTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/font_12"
+                    tools:text="2:30 pm" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,6 +1,5 @@
 package in.squareiapp.landmarkcity.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -10,6 +9,7 @@ import android.view.View;
 import in.squareiapp.landmarkcity.R;
 import in.squareiapp.landmarkcity.activities.useraccesspackage.LoginActivity;
 import in.squareiapp.landmarkcity.interfaces.AppConstants;
+import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
 public class SplashActivity extends BaseActivity {
     private final String TAG = getClass().getSimpleName();
@@ -19,14 +19,20 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         hideStatusBar();
         setContentView(R.layout.activity_splash);
-        //  startMyACtivtiy();
+        startMyACtivtiy();
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
                 System.out.println(TAG);
-                startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+
+                boolean loginStatus = SharedPrefUtils.getInstance(context).getBoolean(SharedPrefUtils.LOGIN_STATUS);
+                if (loginStatus) {
+                    startNewActivity(currentActivity, UserDashboardActivity.class);
+                } else {
+                    startNewActivity(currentActivity, LoginActivity.class);
+                }
 
             }
         }, AppConstants.APP_SPLASH_TIME);
@@ -34,6 +40,8 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void initContext() {
+        context = SplashActivity.this;
+        currentActivity = SplashActivity.this;
     }
 
     @Override
