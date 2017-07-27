@@ -71,7 +71,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         drawer_layout.addDrawerListener(toggle);
         //toolbar.setNavigationIcon(R.drawable.menu);
         toggle.setDrawerIndicatorEnabled(false);
-        toggle.setHomeAsUpIndicator(R.drawable.menu);
+        toggle.setHomeAsUpIndicator(R.drawable.ic_menu_hover_svg);
         toggle.syncState();
         toggle.setToolbarNavigationClickListener(new View.OnClickListener() {
             @Override
@@ -128,22 +128,22 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabOne.setText("Home");
         tabOne.setTextColor(getResources().getColor(R.color.yellow));
-        tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.home, 0, 0);
+        tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home_hover_svg, 0, 0);
         tabs.getTabAt(0).setCustomView(tabOne);
 
         TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabTwo.setText("News");
-        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.news, 0, 0);
+        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_news_svg, 0, 0);
         tabs.getTabAt(1).setCustomView(tabTwo);
 
         TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabThree.setText("Updates");
-        tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.updates, 0, 0);
+        tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_update_svg, 0, 0);
         tabs.getTabAt(2).setCustomView(tabThree);
 
         TextView tabFour = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabFour.setText("Notice");
-        tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.notice, 0, 0);
+        tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_notice_svg, 0, 0);
         tabs.getTabAt(3).setCustomView(tabFour);
     }
 
@@ -156,21 +156,25 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.yellow));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home_hover_svg, 0, 0);
                 break;
             case 1:
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.yellow));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_news_hover_svg, 0, 0);
                 break;
             case 2:
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.yellow));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_update_hover_svg, 0, 0);
                 break;
             case 3:
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.yellow));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_notice_hover_svg, 0, 0);
                 break;
         }
     }
@@ -184,21 +188,25 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.white));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_home_svg, 0, 0);
                 break;
             case 1:
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.white));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_news_svg, 0, 0);
                 break;
             case 2:
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.white));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_update_svg, 0, 0);
                 break;
             case 3:
                 view = tabs.getTabAt(tab.getPosition()).getCustomView();
                 tv = (TextView) view.findViewById(R.id.tabText);
                 tv.setTextColor(getResources().getColor(R.color.white));
+                tv.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_notice_svg, 0, 0);
                 break;
         }
     }

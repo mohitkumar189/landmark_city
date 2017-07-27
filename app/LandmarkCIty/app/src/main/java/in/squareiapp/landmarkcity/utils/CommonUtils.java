@@ -29,6 +29,9 @@ import in.squareiapp.landmarkcity.application.LandmarkCityApplication;
  */
 
 public class CommonUtils {
+    public enum DocumentType {
+        DOCUMENT, VIDEO, IMAGE
+    }
 
     public static boolean isEmailValid(String email) {
         boolean isValid = false;
@@ -125,6 +128,13 @@ public class CommonUtils {
         DisplayMetrics metrics = resources.getDisplayMetrics();
         return (metrics.densityDpi / 160f);
 
+    }
+
+    public static DisplayMetrics getDeviceMetrix() {
+        Context context = LandmarkCityApplication.getInstance().getApplicationContext();
+        Resources resources = context.getResources();
+        DisplayMetrics metrics = resources.getDisplayMetrics();
+        return metrics;
     }
 
     public static int convertDpToPixel(float dp) {
@@ -225,4 +235,26 @@ public class CommonUtils {
         return "";
     }
 
+    public static String getContentType(String extension) {
+        switch (extension.toLowerCase().trim()) {
+            case "pdf":
+                return DocumentType.DOCUMENT.name();
+            case "jpeg":
+                return DocumentType.IMAGE.name();
+            case "jpg":
+                return DocumentType.IMAGE.name();
+            case "png":
+                return DocumentType.IMAGE.name();
+            case "mp4":
+                return DocumentType.VIDEO.name();
+            case "wmv":
+                return DocumentType.VIDEO.name();
+            case "mpeg":
+                return DocumentType.VIDEO.name();
+            default:
+                break;
+
+        }
+        return "";
+    }
 }

@@ -7,11 +7,11 @@
     android:id="@+id/cardPost"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/dp2"
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    app:cardCornerRadius="1dp"
-    app:elevation="2dp">
+    app:cardCornerRadius="2dp"
+    app:cardUseCompatPadding="true"
+    app:elevation="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -25,8 +25,8 @@
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/ivProfile"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/profile"
@@ -75,7 +75,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/relativeUser"
             android:maxLines="3"
-            android:padding="@dimen/dp8"
+            android:paddingBottom="@dimen/dp4"
+            android:paddingLeft="@dimen/dp8"
+            android:paddingRight="@dimen/dp8"
             android:textColor="@color/text_dark"
             android:textSize="@dimen/font_14"
             tools:text="This is the post at the time of posting for the landmark city kota. App is having too cool features." />

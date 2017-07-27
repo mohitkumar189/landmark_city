@@ -14,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import in.squareiapp.landmarkcity.R;
@@ -87,18 +88,39 @@ public class HomeFragment extends BaseFragment implements NetworkResponseListene
 
     }
 
+    private int likePosition = -1;
+
     @Override
     public void onStringResponse(ApiURLS.ApiId apiId, String stringResponse) {
         Logger.error(TAG, "" + stringResponse);
-        JsonParser jsonParser = new JsonParser(stringResponse);
-        int success = jsonParser.getSuccess();
-        //  int error = jsonParser.getError();
-        String message = jsonParser.getMessage();
-        if (success == 1) {
-            JSONArray jsonArray = jsonParser.getArrayData();
-            setData(jsonArray);
-        } else {
-            showToast(context, message);
+
+        if (apiId == ApiURLS.ApiId.USERS_POST) {
+            JsonParser jsonParser = new JsonParser(stringResponse);
+            int success = jsonParser.getSuccess();
+            //  int error = jsonParser.getError();
+            String message = jsonParser.getMessage();
+            if (success == 1) {
+                JSONArray jsonArray = jsonParser.getArrayData();
+                setData(jsonArray);
+            } else {
+                showToast(context, message);
+            }
+        } else if (apiId == ApiURLS.ApiId.POST_LIKE) {
+            JsonParser jsonParser = new JsonParser(stringResponse);
+            int success = jsonParser.getSuccess();
+            //  int error = jsonParser.getError();
+            String message = jsonParser.getMessage();
+            if (success == 1) {
+                if (likePosition >= 0) {
+                    usersPostsData.get(likePosition).setLiked(1);
+                    usersPostsAdapter.notifyDataSetChanged();
+                }
+                // JSONArray jsonArray = jsonParser.getArrayData();
+                // setData(jsonArray);
+                showToast(context, message);
+            } else {
+                showToast(context, message);
+            }
         }
     }
 
@@ -108,6 +130,7 @@ public class HomeFragment extends BaseFragment implements NetworkResponseListene
     }
 
     private void setData(JSONArray jsonArray) {
+        Logger.info(TAG, "=============setting data to home fragmnet");
         int length = jsonArray.length();
         for (int i = 0; i < length; i++) {
             try {
@@ -125,6 +148,8 @@ public class HomeFragment extends BaseFragment implements NetworkResponseListene
                 userdata.setUpdated_on(jsonObject.getString("updated_on"));
                 userdata.setPostedBy(jsonObject.getString("postedBy"));
                 userdata.setProfilepic(jsonObject.getString("profilepic"));
+                userdata.setCommented(jsonObject.getInt("commented"));
+                userdata.setLiked(jsonObject.getInt("liked"));
 
                 usersPostsData.add(userdata);
             } catch (JSONException e) {
@@ -137,6 +162,29 @@ public class HomeFragment extends BaseFragment implements NetworkResponseListene
 
     @Override
     public void onItemClickCallback(int position, int flag) {
+        Logger.info(TAG, "clicked on:: " + position + " flag is:: " + flag);
+        switch (flag) {
+            case 1:
+                break;
+            case 2:
+                likePosition = position;
+                continuePostLike(position);
 
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+        }
+    }
+
+    private void continuePostLike(int position) {
+        String client_id = SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID);
+
+        HashMap<String, String> m = new HashMap<>();
+        m.put("postid", usersPostsData.get(position).getId());
+        m.put("client_id", client_id);
+
+        NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.POST_LIKE, ApiURLS.ApiId.POST_LIKE, ApiURLS.REQUEST_POST, m, null, false);
     }
 }

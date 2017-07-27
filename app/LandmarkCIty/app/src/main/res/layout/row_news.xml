@@ -7,7 +7,8 @@
     android:background="?attr/selectableItemBackground"
     android:clickable="true"
     app:cardCornerRadius="1dp"
-    app:elevation="2dp">
+    app:elevation="2dp"
+    android:id="@+id/cardPost">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         <in.squareiapp.landmarkcity.custom_views.AppTextView
             android:id="@+id/tvNews"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_above="@+id/rel"
             android:layout_toRightOf="@+id/ivNewsImage"
             android:maxLines="4"
@@ -43,6 +44,7 @@
             android:layout_toRightOf="@+id/ivNewsImage">
 
             <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:visibility="gone"
                 android:id="@+id/tvNewsDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -52,6 +54,7 @@
                 tools:text="July 24" />
 
             <View
+                android:visibility="gone"
                 android:id="@+id/view1"
                 android:layout_width="1dp"
                 android:layout_height="10dp"
@@ -63,6 +66,7 @@
 
 
             <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:visibility="gone"
                 android:id="@+id/tvNewsTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,6 +75,16 @@
                 android:textColor="@color/text_light"
                 android:textSize="@dimen/font_12"
                 tools:text="2:30 pm" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvNewsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_12"
+                android:layout_alignParentRight="true"
+                tools:text="Times now" />
         </RelativeLayout>
 
 

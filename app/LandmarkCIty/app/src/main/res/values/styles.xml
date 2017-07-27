@@ -11,6 +11,7 @@
         <item name="textAllCaps">false</item>
         <item name="actionBarStyle">@style/ActionBarStyle</item>
         <item name="actionButtonStyle">@style/AppTheme.Widget.ActionButton</item>
+        <item name="android:windowBackground">@color/another_white</item>
 
     </style>
 
@@ -41,7 +42,7 @@
     <style name="PopupMenuListView" parent="@style/Widget.AppCompat.Light.ListView.DropDown">
         <item name="android:divider">@color/material_grey_100</item>
         <item name="android:dividerHeight">1px</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/another_white</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

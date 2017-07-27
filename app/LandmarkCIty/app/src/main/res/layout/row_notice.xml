@@ -6,10 +6,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
     android:clickable="true"
-    app:cardCornerRadius="1dp"
-    app:elevation="2dp">
+    app:cardCornerRadius="2dp"
+    app:elevation="3dp"
+    android:id="@+id/cardPost"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,8 +24,8 @@
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/ivProfile"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/profile"
@@ -46,16 +47,16 @@
                     android:id="@+id/tvUserName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_dark"
-                    android:textSize="@dimen/font_14"
+                    android:textColor="@color/text_dark_dark"
+                    android:textSize="@dimen/font_16"
                     tools:text="Mohit Kumar" />
 
                 <in.squareiapp.landmarkcity.custom_views.AppTextView
                     android:id="@+id/tvPostTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_light"
-                    android:textSize="@dimen/font_10"
+                    android:textColor="@color/text_dark"
+                    android:textSize="@dimen/font_12"
                     tools:text="Landmark city, Rajsthan(kota)" />
 
             </LinearLayout>
@@ -67,7 +68,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:padding="@dimen/dp4"
-                android:src="@drawable/share" />
+                tools:src="@drawable/share" />
         </RelativeLayout>
 
         <in.squareiapp.landmarkcity.custom_views.AppTextView
@@ -94,13 +95,15 @@
                 tools:src="@drawable/image_back" />
 
             <ImageView
+
                 android:id="@+id/ivUpdateType"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:padding="@dimen/dp2"
-                tools:src="@drawable/video_icon" />
+                android:src="@drawable/video_icon"
+                android:visibility="gone"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -134,11 +137,12 @@
                     android:id="@+id/tvNewsTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_12"
-                    tools:text="2:30 pm" />
+                    tools:text="2:30 pm"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
 
 
             </RelativeLayout>

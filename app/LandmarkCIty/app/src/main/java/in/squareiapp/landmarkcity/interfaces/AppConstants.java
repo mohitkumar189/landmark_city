@@ -11,4 +11,5 @@ public interface AppConstants {
     /* animation type*/
     int ANIMATION_SLIDE_UP = 0x01;
     int ANIMATION_SLIDE_LEFT = 0x02;
+
 }

@@ -36,6 +36,7 @@ public class NetworkRequestHandler {
     public static NetworkRequestHandler getInstance(Context context, NetworkResponseListener networkResponseListener) {
 
         NetworkRequestHandler.networkResponseListener = networkResponseListener;
+        Logger.info(TAG, "received callback::" + networkResponseListener);
         if (progressDialog == null) {
             progressDialog = new ProgressDialog(context);
             progressDialog.setMessage(dialogMessage);
@@ -47,7 +48,8 @@ public class NetworkRequestHandler {
     public void getStringResponse(final String requestUrl, final ApiURLS.ApiId apiId, int requestMethod, final Map<String, String> postParams, final Map<String, String> headerParams, boolean isProgressDialog) {
         Logger.info(TAG, "====>Network Call<===:: " + requestUrl + " :: request Method==> " + requestMethod);
 
-        showProgressDialog(progressDialog);
+        if (isProgressDialog)
+            showProgressDialog(progressDialog);
 
         StringRequest stringRequest = new StringRequest(requestMethod, requestUrl, new Response.Listener<String>() {
             @Override
@@ -57,7 +59,7 @@ public class NetworkRequestHandler {
                 try {
                     if (response != null) {
                         if (NetworkRequestHandler.networkResponseListener != null) {
-                            Logger.debug(TAG, "==>calling response listener<==");
+                            Logger.debug(TAG, "==>calling response listener<==" + networkResponseListener);
                             NetworkRequestHandler.networkResponseListener.onStringResponse(apiId, response);
                         } else {
                             Logger.debug(TAG, "==>response listener is null<==");

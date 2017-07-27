@@ -17,6 +17,8 @@ public class UsersPostsData {
     private String updated_on;
     private String postedBy;
     private String profilepic;
+    private int liked;
+    private int commented;
 
     public String getProfilepic() {
         return profilepic;
@@ -26,6 +28,21 @@ public class UsersPostsData {
         this.profilepic = profilepic;
     }
 
+    public int getLiked() {
+        return liked;
+    }
+
+    public void setLiked(int liked) {
+        this.liked = liked;
+    }
+
+    public int getCommented() {
+        return commented;
+    }
+
+    public void setCommented(int commented) {
+        this.commented = commented;
+    }
 
     public String getId() {
         return id;
