@@ -2,6 +2,7 @@ package in.squareiapp.landmarkcity.fragments;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,12 +18,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.squareiapp.landmarkcity.R;
+import in.squareiapp.landmarkcity.activities.WebviewActivity;
 import in.squareiapp.landmarkcity.adapters.NewsAdapter;
 import in.squareiapp.landmarkcity.interfaces.CustomItemClickListener;
 import in.squareiapp.landmarkcity.interfaces.NetworkResponseListener;
 import in.squareiapp.landmarkcity.models.NewsData;
 import in.squareiapp.landmarkcity.utils.ApiURLS;
 import in.squareiapp.landmarkcity.utils.JsonParser;
+import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler2;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
@@ -86,6 +89,17 @@ public class NewsFragment extends BaseFragment implements NetworkResponseListene
 
     @Override
     public void onItemClickCallback(int position, int flag) {
+
+        switch (flag) {
+            case 1:
+                Bundle bundle = new Bundle();
+                bundle.putString("bundle", newsDataList.get(position).getLink());
+                Logger.info(TAG, position + " " + flag);
+                Intent intent = new Intent(context, WebviewActivity.class);
+                intent.putExtra("bundle", newsDataList.get(position).getLink());
+                context.startActivity(intent);
+                break;
+        }
 
     }
 

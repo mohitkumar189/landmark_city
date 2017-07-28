@@ -6,6 +6,10 @@
         android:icon="@drawable/profile_48"
         android:title="Profile" />
     <item
+        android:id="@+id/nav_friend"
+        android:icon="@drawable/friends_48"
+        android:title="Friends" />
+    <item
         android:id="@+id/nav_chat"
         android:icon="@drawable/chat_48"
         android:title="Chat" />

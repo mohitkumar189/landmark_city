@@ -33,7 +33,7 @@
             android:name=".activities.useraccesspackage.UserRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".activities.useraccesspackage.OtpEnterActivity"
             android:noHistory="true"
@@ -43,11 +43,13 @@
         <activity
             android:name=".activities.useraccesspackage.ForgotPasswordActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:noHistory="true"/>
         <activity
             android:name=".activities.featuresactivities.UserProfileActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".activities.featuresactivities.UserChatActivity"
             android:screenOrientation="portrait"
@@ -83,11 +85,25 @@
         <activity
             android:name=".activities.UserDashboardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.featuresactivities.VideoPlayerActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.WebviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.featuresactivities.FriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.useraccesspackage.ResetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
+            android:noHistory="true"></activity>
     </application>
 
 </manifest>

@@ -17,14 +17,13 @@ import in.squareiapp.landmarkcity.R;
 import in.squareiapp.landmarkcity.interfaces.CustomItemClickListener;
 import in.squareiapp.landmarkcity.models.NewsData;
 import in.squareiapp.landmarkcity.utils.CommonUtils;
-import in.squareiapp.landmarkcity.utils.Logger;
 
 /**
  * Created by mohit kumar on 7/27/2017.
  */
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
-
+    private final String TAG = getClass().getSimpleName();
     private CustomItemClickListener customItemClickListener;
     private List<NewsData> usersPostsData;
     private Context context;
@@ -75,12 +74,12 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
 
         public void bind(NewsData usersPostsData, int position, CustomItemClickListener customItemClickListener) {
 
-            Logger.error("tag","=========news url::"+usersPostsData.getImage());
+         //   Logger.error("tag","=========news url::"+usersPostsData.getImage());
             if (CommonUtils.isValidString(usersPostsData.getImage()))
                 Picasso.with(context).load("http:"+usersPostsData.getImage()).fit().into(ivNewsImage);
 
             tvNews.setText(usersPostsData.getStory());
-            tvNewsTitle.setText(usersPostsData.getTitle());
+            tvNewsTitle.setText(usersPostsData.getSite_title());
             //  tvNewsDate.setText(usersPostsData.get());
             //    tvNewsTime.setText(usersPostsData.getPostedBy());
 
@@ -91,7 +90,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.cardPost:
-                    //  customItemClickListener.onItemClickCallback(getAdapterPosition(), 1);
+                      customItemClickListener.onItemClickCallback(getAdapterPosition(), 1);
                     break;
             }
         }
