@@ -23,7 +23,7 @@ import in.squareiapp.landmarkcity.interfaces.NetworkResponseListener;
 import in.squareiapp.landmarkcity.models.NewsData;
 import in.squareiapp.landmarkcity.utils.ApiURLS;
 import in.squareiapp.landmarkcity.utils.JsonParser;
-import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
+import in.squareiapp.landmarkcity.utils.NetworkRequestHandler2;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
 
@@ -69,10 +69,13 @@ public class NewsFragment extends BaseFragment implements NetworkResponseListene
     }
 
     private void getNewsData() {
+        NetworkRequestHandler2 networkRequestHandler = new NetworkRequestHandler2(context, this);
+
         String client_id = SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID);
 
         String url = ApiURLS.GET_NEWS + "?client_id=" + client_id;
-        NetworkRequestHandler.getInstance(context, this).getStringResponse(url, ApiURLS.ApiId.GET_NEWS, ApiURLS.REQUEST_GET, null, null, false);
+        //   NetworkRequestHandler.getInstance(context, this).getStringResponse(url, ApiURLS.ApiId.GET_NEWS, ApiURLS.REQUEST_GET, null, null, false);
+        networkRequestHandler.getStringResponse(url, ApiURLS.ApiId.GET_NEWS, ApiURLS.REQUEST_GET, null, null, false);
 
     }
 

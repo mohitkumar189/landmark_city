@@ -29,9 +29,19 @@ public class NetworkRequestHandler {
     private static ProgressDialog progressDialog;
     private static String dialogMessage = "Please wait...";
 
-    private NetworkRequestHandler() {
+    public NetworkRequestHandler() {
 
     }
+
+    public NetworkRequestHandler(Context context, NetworkResponseListener networkResponseListener) {
+        Logger.info(TAG, "object is created for ::" + networkResponseListener);
+        if (progressDialog == null) {
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setMessage(dialogMessage);
+            progressDialog.setCancelable(true);
+        }
+    }
+
 
     public static NetworkRequestHandler getInstance(Context context, NetworkResponseListener networkResponseListener) {
 

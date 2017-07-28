@@ -26,6 +26,7 @@ import in.squareiapp.landmarkcity.utils.ApiURLS;
 import in.squareiapp.landmarkcity.utils.JsonParser;
 import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
+import in.squareiapp.landmarkcity.utils.NetworkRequestHandler2;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
 /**
@@ -77,10 +78,12 @@ public class HomeFragment extends BaseFragment implements NetworkResponseListene
     }
 
     private void getPostsData() {
+        NetworkRequestHandler2 networkRequestHandler = new NetworkRequestHandler2(context, this);
         String client_id = SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID);
 
         String url = ApiURLS.USERS_POST + "?client_id=" + client_id;
-        NetworkRequestHandler.getInstance(context, this).getStringResponse(url, ApiURLS.ApiId.USERS_POST, ApiURLS.REQUEST_GET, null, null, true);
+        // NetworkRequestHandler.getInstance(context, this).getStringResponse(url, ApiURLS.ApiId.USERS_POST, ApiURLS.REQUEST_GET, null, null, true);
+        networkRequestHandler.getStringResponse(url, ApiURLS.ApiId.USERS_POST, ApiURLS.REQUEST_GET, null, null, true);
     }
 
     @Override
@@ -95,6 +98,7 @@ public class HomeFragment extends BaseFragment implements NetworkResponseListene
         Logger.error(TAG, "" + stringResponse);
 
         if (apiId == ApiURLS.ApiId.USERS_POST) {
+            Logger.error(TAG, "" + "doing something for the post response");
             JsonParser jsonParser = new JsonParser(stringResponse);
             int success = jsonParser.getSuccess();
             //  int error = jsonParser.getError();
