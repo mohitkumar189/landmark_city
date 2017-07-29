@@ -32,7 +32,7 @@ public class NetworkRequestHandler2 {
             progressDialog.setMessage(dialogMessage);
             progressDialog.setCancelable(true);
         }
-        this.networkResponseListener=networkResponseListener;
+        this.networkResponseListener = networkResponseListener;
     }
 
     public void getStringResponse(final String requestUrl, final ApiURLS.ApiId apiId, int requestMethod, final Map<String, String> postParams, final Map<String, String> headerParams, boolean isProgressDialog) {

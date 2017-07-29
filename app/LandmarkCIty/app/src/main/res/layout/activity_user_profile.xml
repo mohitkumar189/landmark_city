@@ -16,13 +16,21 @@
             android:layout_height="170dp"
             android:background="@drawable/profile_back">
 
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp8"
+                android:padding="@dimen/dp2"
+                app:srcCompat="@drawable/ic_left_arrow_svg" />
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="30dp"
-                android:scaleType="fitXY"
                 android:src="@drawable/user_image"
                 app:civ_border_color="#ffffff"
                 app:civ_border_width="2dp" />
@@ -63,10 +71,12 @@
                 android:layout_marginTop="@dimen/dp1"
                 android:layout_toRightOf="@+id/view1"
                 android:background="@drawable/edit_text_background"
+                android:gravity="center_vertical"
                 android:hint="Mohit Kumar"
-                android:paddingBottom="@dimen/dp4"
+                android:paddingBottom="@dimen/dp6"
                 android:paddingLeft="@dimen/dp4"
-                android:paddingTop="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
                 android:textColor="@color/text_dark"
                 android:textColorHint="@color/text_hint"
                 android:textSize="@dimen/font_14" />
@@ -77,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editUserName"
                 android:layout_marginLeft="@dimen/dp4"
-                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="Email"
                 android:textColor="@color/text_light"
                 android:textSize="@dimen/font_14" />
@@ -92,10 +102,12 @@
                 android:layout_toRightOf="@+id/view1"
                 android:background="@drawable/edit_text_background"
                 android:editable="false"
+                android:gravity="center_vertical"
                 android:hint="Email"
-                android:paddingBottom="@dimen/dp4"
+                android:paddingBottom="@dimen/dp6"
                 android:paddingLeft="@dimen/dp4"
-                android:paddingTop="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
                 android:textColor="@color/text_dark"
                 android:textColorHint="@color/text_hint"
                 android:textSize="@dimen/font_14" />
@@ -106,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editUserEmail"
                 android:layout_marginLeft="@dimen/dp4"
-                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="Address"
                 android:textColor="@color/text_light"
                 android:textSize="@dimen/font_14" />
@@ -121,9 +133,10 @@
                 android:layout_toRightOf="@+id/view1"
                 android:background="@drawable/edit_text_background"
                 android:hint="Address"
-                android:paddingBottom="@dimen/dp4"
+                android:paddingBottom="@dimen/dp6"
                 android:paddingLeft="@dimen/dp4"
-                android:paddingTop="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
                 android:textColor="@color/text_dark"
                 android:textColorHint="@color/text_hint"
                 android:textSize="@dimen/font_14" />
@@ -147,7 +160,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp4"
-                        android:layout_marginTop="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp10"
                         android:text="Landmark"
                         android:textColor="@color/text_light"
                         android:textSize="@dimen/font_14" />
@@ -162,9 +175,10 @@
                         android:layout_toRightOf="@+id/view1"
                         android:background="@drawable/edit_text_background"
                         android:hint="Landmark"
-                        android:paddingBottom="@dimen/dp4"
+                        android:paddingBottom="@dimen/dp6"
                         android:paddingLeft="@dimen/dp4"
-                        android:paddingTop="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
                         android:textColor="@color/text_dark"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/font_14" />
@@ -181,7 +195,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp4"
-                        android:layout_marginTop="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp10"
                         android:text="Zip code"
                         android:textColor="@color/text_light"
                         android:textSize="@dimen/font_14" />
@@ -196,9 +210,10 @@
                         android:layout_toRightOf="@+id/view1"
                         android:background="@drawable/edit_text_background"
                         android:hint="Zip code"
-                        android:paddingBottom="@dimen/dp4"
+                        android:paddingBottom="@dimen/dp6"
                         android:paddingLeft="@dimen/dp4"
-                        android:paddingTop="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
                         android:textColor="@color/text_dark"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/font_14" />
@@ -224,7 +239,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp4"
-                        android:layout_marginTop="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp10"
                         android:text="State"
                         android:textColor="@color/text_light"
                         android:textSize="@dimen/font_14" />
@@ -239,9 +254,10 @@
                         android:layout_toRightOf="@+id/view1"
                         android:background="@drawable/edit_text_background"
                         android:hint="State"
-                        android:paddingBottom="@dimen/dp4"
+                        android:paddingBottom="@dimen/dp6"
                         android:paddingLeft="@dimen/dp4"
-                        android:paddingTop="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
                         android:textColor="@color/text_dark"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/font_14" />
@@ -258,7 +274,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/dp4"
-                        android:layout_marginTop="@dimen/dp8"
+                        android:layout_marginTop="@dimen/dp10"
                         android:text="Country"
                         android:textColor="@color/text_light"
                         android:textSize="@dimen/font_14" />
@@ -273,9 +289,10 @@
                         android:layout_toRightOf="@+id/view1"
                         android:background="@drawable/edit_text_background"
                         android:hint="Country"
-                        android:paddingBottom="@dimen/dp4"
+                        android:paddingBottom="@dimen/dp6"
                         android:paddingLeft="@dimen/dp4"
-                        android:paddingTop="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
                         android:textColor="@color/text_dark"
                         android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/font_14" />
@@ -288,7 +305,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linear2"
                 android:layout_marginLeft="@dimen/dp4"
-                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="City"
                 android:textColor="@color/text_light"
                 android:textSize="@dimen/font_14" />
@@ -303,9 +320,10 @@
                 android:layout_toRightOf="@+id/view1"
                 android:background="@drawable/edit_text_background"
                 android:hint="City"
-                android:paddingBottom="@dimen/dp4"
+                android:paddingBottom="@dimen/dp6"
                 android:paddingLeft="@dimen/dp4"
-                android:paddingTop="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
                 android:textColor="@color/text_dark"
                 android:textColorHint="@color/text_hint"
                 android:textSize="@dimen/font_14" />
@@ -316,7 +334,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editUserCity"
                 android:layout_marginLeft="@dimen/dp4"
-                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="Mobile No"
                 android:textColor="@color/text_light"
                 android:textSize="@dimen/font_14" />
@@ -331,9 +349,10 @@
                 android:layout_toRightOf="@+id/view1"
                 android:background="@drawable/edit_text_background"
                 android:hint="Mobile No"
-                android:paddingBottom="@dimen/dp4"
+                android:paddingBottom="@dimen/dp6"
                 android:paddingLeft="@dimen/dp4"
-                android:paddingTop="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
                 android:textColor="@color/text_dark"
                 android:textColorHint="@color/text_hint"
                 android:textSize="@dimen/font_14" />
@@ -344,7 +363,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/editUserMobile"
                 android:layout_marginLeft="@dimen/dp4"
-                android:layout_marginTop="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp10"
                 android:text="Gender"
                 android:textColor="@color/text_light"
                 android:textSize="@dimen/font_14" />
@@ -359,9 +378,10 @@
                 android:layout_toRightOf="@+id/view1"
                 android:background="@drawable/edit_text_background"
                 android:hint="Gender"
-                android:paddingBottom="@dimen/dp4"
+                android:paddingBottom="@dimen/dp6"
                 android:paddingLeft="@dimen/dp4"
-                android:paddingTop="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
                 android:textColor="@color/text_dark"
                 android:textColorHint="@color/text_hint"
                 android:textSize="@dimen/font_14" />
@@ -370,11 +390,11 @@
         </RelativeLayout>
 
         <Button
-            android:layout_marginTop="@dimen/dp8"
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_below="@+id/editGender"
+            android:layout_marginTop="@dimen/dp10"
             android:background="@color/btn_background"
             android:text="SUBMIT"
             android:textColor="@color/white" />

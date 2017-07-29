@@ -16,6 +16,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import in.squareiapp.landmarkcity.R;
+import in.squareiapp.landmarkcity.activities.featuresactivities.FriendsActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.GreetingsActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.MapActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.MusicActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.RewardsActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.SettingActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.ShareLocationActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.StoreActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.UserProfileActivity;
 import in.squareiapp.landmarkcity.adapters.ViewPagerAdapter;
 import in.squareiapp.landmarkcity.fragments.HomeFragment;
 import in.squareiapp.landmarkcity.fragments.NewsFragment;
@@ -95,7 +104,49 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
+        switch (item.getItemId()) {
+            case R.id.nav_profile:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, UserProfileActivity.class);
+                break;
+            case R.id.nav_friend:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, UserProfileActivity.class);
+                break;
+            case R.id.nav_chat:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, FriendsActivity.class);
+                break;
+            case R.id.nav_music:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, MusicActivity.class);
+                break;
+            case R.id.nav_map:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, MapActivity.class);
+                break;
+            case R.id.nav_rewards:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, RewardsActivity.class);
+                break;
+            case R.id.nav_store:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, StoreActivity.class);
+                break;
+            case R.id.nav_greetings:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, GreetingsActivity.class);
+                break;
+            case R.id.nav_share_location:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, ShareLocationActivity.class);
+                break;
+            case R.id.nav_setting:
+                drawer_layout.closeDrawer(nav_view);
+                startNewActivity(currentActivity, SettingActivity.class);
+                break;
+        }
+        return true;
     }
 
     @Override

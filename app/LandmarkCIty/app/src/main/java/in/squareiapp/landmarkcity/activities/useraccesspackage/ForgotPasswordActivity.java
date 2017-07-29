@@ -1,5 +1,6 @@
 package in.squareiapp.landmarkcity.activities.useraccesspackage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -111,6 +112,10 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
         int error = jsonParser.getError();
         String message = jsonParser.getMessage();
         if (success == 1 && error == 0) {
+            Intent intent = new Intent(currentActivity, ResetPasswordActivity.class);
+            intent.putExtra("username", editUserName.getText().toString().trim());
+            Logger.info(TAG, "sending username::" + editUserName.getText().toString().trim());
+            startActivity(intent);
             showToast(message, false);
         } else {
             showToast(message, false);

@@ -45,8 +45,8 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // setContentView(R.layout.activity_otp_enter);
-        setContentView((new MainLayout(this, null)));
+         setContentView(R.layout.activity_otp_enter);
+      //  setContentView((new MainLayout(this, null)));
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
@@ -82,7 +82,7 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
     protected void initListners() {
         btnVerify.setOnClickListener(this);
         tvResend.setOnClickListener(this);
-        setPINListeners();
+      //  setPINListeners();
     }
 
     @Override
@@ -108,10 +108,10 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
     }
 
     private void continueVerifyOtp() {
-        String otp = editDigit1.getText().toString().trim() + editDigit2.getText().toString().trim() + editDigit3.getText().toString().trim() + editDigit4.getText().toString().trim();
+      //  String otp = editDigit1.getText().toString().trim() + editDigit2.getText().toString().trim() + editDigit3.getText().toString().trim() + editDigit4.getText().toString().trim();
         if (CommonUtils.isNetworkAvailable(context)) {
             HashMap<String, String> hm = new HashMap<>();
-            hm.put("otp", otp);
+            hm.put("otp", editDigit1.getText().toString().trim());
             hm.put("client_id", apikey);
 
             NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_VERIFY_OTP, ApiURLS.ApiId.USER_VERIFY_OTP, ApiURLS.REQUEST_POST, hm, null, true);

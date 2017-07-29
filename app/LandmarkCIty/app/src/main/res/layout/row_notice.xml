@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardPost"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
-    app:cardCornerRadius="2dp"
-    app:elevation="3dp"
-    android:id="@+id/cardPost"
-    app:cardUseCompatPadding="true">
+    app:cardCornerRadius="1dp"
+    app:cardUseCompatPadding="true"
+    app:elevation="3dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -22,7 +19,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/dp8">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -30,8 +27,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/profile"
                 app:civ_border_color="#eae8e8"
-                app:civ_border_width="1dp"
-                app:civ_shadow_color="#8BC34A" />
+                app:civ_border_width="1dp" />
 
 
             <LinearLayout
@@ -103,7 +99,7 @@
                 android:layout_centerVertical="true"
                 android:padding="@dimen/dp2"
                 android:src="@drawable/video_icon"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -137,12 +133,12 @@
                     android:id="@+id/tvNewsTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/font_12"
-                    tools:text="2:30 pm"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    tools:text="2:30 pm" />
 
 
             </RelativeLayout>
