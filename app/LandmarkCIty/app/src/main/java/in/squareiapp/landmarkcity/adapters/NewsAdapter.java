@@ -80,7 +80,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
                 Picasso.with(context).load("http:"+usersPostsData.getImage()).fit().into(ivNewsImage);
 
             tvNews.setText(usersPostsData.getStory());
-            tvNewsTitle.setText(usersPostsData.getTitle());
+            tvNewsTitle.setText(usersPostsData.getSite_title());
             //  tvNewsDate.setText(usersPostsData.get());
             //    tvNewsTime.setText(usersPostsData.getPostedBy());
 
