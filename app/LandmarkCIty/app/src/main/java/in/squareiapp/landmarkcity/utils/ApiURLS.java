@@ -27,8 +27,13 @@ public class ApiURLS {
     public static final String GET_NEWS = BASE_URL + "news";
     public static final String GET_UPDATES = BASE_URL + "update/get";
     public static final String GET_PROFILE = BASE_URL + "profile";
+    public static final String GET_FRIENDS = BASE_URL + "friend";
+    public static final String GET_FRIENDS_REQUESTS = BASE_URL + "friend/requests";
+    public static final String GET_FRIENDS_SUGGESTIONS = BASE_URL + "friend/suggestions";
+    public static final String SEND_FRIEND_REQUEST = BASE_URL + "friend/reqsend";
 
     public enum ApiId {
-        USER_REGISTER_URL, USER_LOGIN_URL, USER_RESET_PASSWORD, RESET_PASSWORD, USER_VERIFY_OTP, USER_RESEND_OTP, USERS_POST, POST_LIKE, GET_NOTICE, GET_NEWS, GET_UPDATES, GET_PROFILE
+        USER_REGISTER_URL, USER_LOGIN_URL, USER_RESET_PASSWORD, RESET_PASSWORD, USER_VERIFY_OTP,
+        USER_RESEND_OTP, USERS_POST, POST_LIKE, GET_NOTICE, GET_NEWS, GET_UPDATES, GET_PROFILE, GET_FRIENDS, GET_FRIENDS_SUGGESTIONS, SEND_FRIEND_REQUEST
     }
 }

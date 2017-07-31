@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.squareiapp.landmarkcity.activities.featuresactivities.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:background="@drawable/profile_back">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp8"
+                android:padding="@dimen/dp2"
+                app:srcCompat="@drawable/ic_left_arrow_svg" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/user_image"
+                app:civ_border_color="#ffffff"
+                app:civ_border_width="2dp" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivProfile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14"
+                tools:text="Mohit Kumar" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp8">
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginTop="@dimen/dp4"
+                android:text="Name"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/editUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvName"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp1"
+                android:layout_toRightOf="@+id/view1"
+                android:background="@drawable/edit_text_background"
+                android:gravity="center_vertical"
+                android:hint="Mohit Kumar"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_14" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editUserName"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Email"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/editUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvEmail"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp1"
+                android:layout_toRightOf="@+id/view1"
+                android:background="@drawable/edit_text_background"
+                android:editable="false"
+                android:gravity="center_vertical"
+                android:hint="Email"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_14" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editUserEmail"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Address"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/editUserAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvAddress"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp1"
+                android:layout_toRightOf="@+id/view1"
+                android:background="@drawable/edit_text_background"
+                android:hint="Address"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_14" />
+
+            <LinearLayout
+                android:id="@+id/linear1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editUserAddress"
+                android:layout_marginTop="@dimen/dp8"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <in.squareiapp.landmarkcity.custom_views.AppTextView
+                        android:id="@+id/tvLandmark"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp4"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="Landmark"
+                        android:textColor="@color/text_light"
+                        android:textSize="@dimen/font_14" />
+
+                    <EditText
+                        android:id="@+id/editLandmark"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvLandmark"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp1"
+                        android:layout_toRightOf="@+id/view1"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Landmark"
+                        android:paddingBottom="@dimen/dp6"
+                        android:paddingLeft="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
+                        android:textColor="@color/text_dark"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/font_14" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp4"
+                    android:layout_weight="1">
+
+                    <in.squareiapp.landmarkcity.custom_views.AppTextView
+                        android:id="@+id/tvZip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp4"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="Zip code"
+                        android:textColor="@color/text_light"
+                        android:textSize="@dimen/font_14" />
+
+                    <EditText
+                        android:id="@+id/editZipcode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvZip"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp1"
+                        android:layout_toRightOf="@+id/view1"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Zip code"
+                        android:paddingBottom="@dimen/dp6"
+                        android:paddingLeft="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
+                        android:textColor="@color/text_dark"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/font_14" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear1"
+                android:layout_marginTop="@dimen/dp8"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <in.squareiapp.landmarkcity.custom_views.AppTextView
+                        android:id="@+id/tvState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp4"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="State"
+                        android:textColor="@color/text_light"
+                        android:textSize="@dimen/font_14" />
+
+                    <EditText
+                        android:id="@+id/editState"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvState"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp1"
+                        android:layout_toRightOf="@+id/view1"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="State"
+                        android:paddingBottom="@dimen/dp6"
+                        android:paddingLeft="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
+                        android:textColor="@color/text_dark"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/font_14" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp4"
+                    android:layout_weight="1">
+
+                    <in.squareiapp.landmarkcity.custom_views.AppTextView
+                        android:id="@+id/tvCountry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/dp4"
+                        android:layout_marginTop="@dimen/dp10"
+                        android:text="Country"
+                        android:textColor="@color/text_light"
+                        android:textSize="@dimen/font_14" />
+
+                    <EditText
+                        android:id="@+id/editCountry"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tvCountry"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp1"
+                        android:layout_toRightOf="@+id/view1"
+                        android:background="@drawable/edit_text_background"
+                        android:hint="Country"
+                        android:paddingBottom="@dimen/dp6"
+                        android:paddingLeft="@dimen/dp4"
+                        android:paddingTop="@dimen/dp6"
+                        android:singleLine="true"
+                        android:textColor="@color/text_dark"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/font_14" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear2"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="City"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/editUserCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvCity"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp1"
+                android:layout_toRightOf="@+id/view1"
+                android:background="@drawable/edit_text_background"
+                android:hint="City"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_14" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvMobile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editUserCity"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Mobile No"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/editUserMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvMobile"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp1"
+                android:layout_toRightOf="@+id/view1"
+                android:background="@drawable/edit_text_background"
+                android:hint="Mobile No"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_14" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editUserMobile"
+                android:layout_marginLeft="@dimen/dp4"
+                android:layout_marginTop="@dimen/dp10"
+                android:text="Gender"
+                android:textColor="@color/text_light"
+                android:textSize="@dimen/font_14" />
+
+            <EditText
+                android:id="@+id/editGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvGender"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/dp1"
+                android:layout_toRightOf="@+id/view1"
+                android:background="@drawable/edit_text_background"
+                android:hint="Gender"
+                android:paddingBottom="@dimen/dp6"
+                android:paddingLeft="@dimen/dp4"
+                android:paddingTop="@dimen/dp6"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_14" />
+
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/editGender"
+            android:layout_marginTop="@dimen/dp10"
+            android:background="@color/btn_background"
+            android:text="SUBMIT"
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+</ScrollView>

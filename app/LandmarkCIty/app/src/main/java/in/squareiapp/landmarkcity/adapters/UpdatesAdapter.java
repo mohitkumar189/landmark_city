@@ -44,26 +44,26 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
         this.customItemClickListener = customItemClickListener;
         this.usersPostsData = usersPostsData;
         this.context = context;
-        Logger.info(TAG, "calling constructor for::" + TAG);
+        // Logger.info(TAG, "calling constructor for::" + TAG);
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.row_updates, parent, false);
-        Logger.info(TAG, "returning view");
+        //     Logger.info(TAG, "returning view");
         return new UpdatesAdapter.MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Logger.info(TAG, "binding view");
+        //    Logger.info(TAG, "binding view");
         holder.bind(usersPostsData.get(position), position, customItemClickListener);
     }
 
     @Override
     public int getItemCount() {
-        Logger.info(TAG, "item size::" + usersPostsData.size());
+        //   Logger.info(TAG, "item size::" + usersPostsData.size());
         return usersPostsData.size();
     }
 
@@ -97,21 +97,21 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
 
             try {
                 u = ApiURLS.BASE_URL + jsonArray.get(0);
-            //    Logger.info("=============", u);
+                Picasso.with(context).load(u).into(ivUpdateImage);
+                Logger.info("=============", u);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            if (CommonUtils.isValidString(u))
-                Picasso.with(context).load(u).into(ivUpdateImage);
 
             tvUpdateTitle.setText(usersPostsData.getTitle());
-
+            Logger.info("=============Conent type", usersPostsData.getPost_type()+" "+usersPostsData.getId());
             if (CommonUtils.getContentType(usersPostsData.getPost_type()).equals(CommonUtils.DocumentType.VIDEO.name())) {
-                // Logger.info("tag", "====================type equal");
+                 Logger.info("tag", "====================type equal");
                 if (ivUpdateType.getVisibility() == View.GONE) {
-                    //    Logger.info("tag", "====================showing image icon");
+                        Logger.info("tag", "====================showing image icon");
                     ivUpdateType.setVisibility(View.VISIBLE);
+                    ivUpdateImage.setImageResource(R.drawable.videoback);
                 }
             }
         }
@@ -134,9 +134,9 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
 
                     if (CommonUtils.getContentType(usersPostsData.get(getAdapterPosition()).getPost_type()).equals(CommonUtils.DocumentType.VIDEO.name())) {
                         //  String u = ApiURLS.BASE_URL + jsonArray.get(0);
-                        Logger.info("tag", "Playing video");
+                        //   Logger.info("tag", "Playing video");
                         Intent intent = new Intent(context, VideoPlayerActivity.class);
-                        Logger.info("tag", "sending url::" + u);
+                        //   Logger.info("tag", "sending url::" + u);
                         intent.putExtra("videourl", u);
                         context.startActivity(intent);
                     }

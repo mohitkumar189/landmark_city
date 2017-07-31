@@ -42,9 +42,9 @@
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
         <activity
             android:name=".activities.useraccesspackage.ForgotPasswordActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
-            android:noHistory="true"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.featuresactivities.UserProfileActivity"
             android:screenOrientation="portrait"
@@ -100,10 +100,11 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.useraccesspackage.ResetPasswordActivity"
+            android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"
-            android:noHistory="true"></activity>
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+        <activity android:name=".activities.featuresactivities.ProfileActivity"></activity>
     </application>
 
 </manifest>

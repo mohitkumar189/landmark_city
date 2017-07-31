@@ -24,6 +24,7 @@ import in.squareiapp.landmarkcity.activities.featuresactivities.RewardsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.SettingActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.ShareLocationActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.StoreActivity;
+import in.squareiapp.landmarkcity.activities.featuresactivities.UserChatActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.UserProfileActivity;
 import in.squareiapp.landmarkcity.adapters.ViewPagerAdapter;
 import in.squareiapp.landmarkcity.fragments.HomeFragment;
@@ -111,11 +112,11 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 break;
             case R.id.nav_friend:
                 drawer_layout.closeDrawer(nav_view);
-                startNewActivity(currentActivity, UserProfileActivity.class);
+                startNewActivity(currentActivity, FriendsActivity.class);
                 break;
             case R.id.nav_chat:
                 drawer_layout.closeDrawer(nav_view);
-                startNewActivity(currentActivity, FriendsActivity.class);
+                startNewActivity(currentActivity, UserChatActivity.class);
                 break;
             case R.id.nav_music:
                 drawer_layout.closeDrawer(nav_view);

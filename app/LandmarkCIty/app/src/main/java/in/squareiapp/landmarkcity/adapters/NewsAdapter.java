@@ -83,7 +83,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
             //  tvNewsDate.setText(usersPostsData.get());
             //    tvNewsTime.setText(usersPostsData.getPostedBy());
 
-
         }
 
         @Override
