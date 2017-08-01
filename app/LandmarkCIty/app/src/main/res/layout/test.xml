@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-30dp"
+        android:background="@drawable/white_circle"
+        android:paddingBottom="@dimen/dp10">
+
+        <LinearLayout
+            android:id="@+id/lin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp32"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp8">
+
+            <TextView
+                android:id="@+id/tvHealth"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp4"
+                android:layout_weight="1"
+                android:background="@drawable/btn_blue"
+                android:gravity="center"
+                android:padding="@dimen/dp8"
+                android:text="Health"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSecurity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp4"
+                android:layout_weight="1"
+                android:background="@drawable/btn_red"
+                android:gravity="center"
+                android:padding="@dimen/dp8"
+                android:text="Security"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/lin"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:padding="@dimen/dp4"
+                android:src="@drawable/calll" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv1"
+                android:text="+91-120-6999900"
+                android:textSize="@dimen/font_14" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/sos_l" />
+
+</RelativeLayout>

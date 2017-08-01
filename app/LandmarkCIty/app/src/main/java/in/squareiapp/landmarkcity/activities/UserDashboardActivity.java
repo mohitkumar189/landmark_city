@@ -1,9 +1,16 @@
 package in.squareiapp.landmarkcity.activities;
 
+import android.Manifest;
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -12,6 +19,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,6 +48,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
     private ViewPager viewpager;
     private DrawerLayout drawer_layout;
     private TextView toolbarTitle;
+    private ImageView ivSOS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +75,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         tabs = (TabLayout) findViewById(R.id.tabs);
         viewpager = (ViewPager) findViewById(R.id.viewpager);
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
+        ivSOS = (ImageView) findViewById(R.id.ivSOS);
         tabs.setupWithViewPager(viewpager);
         setupViewPager();
         createTabIcons();
@@ -94,7 +105,12 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 }
             }
         });
-
+        ivSOS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDialog();
+            }
+        });
     }
 
     @Override
@@ -275,5 +291,43 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
             case 3:
                 break;
         }
+    }
+
+    public void showDialog() {
+        final Dialog dialog = new Dialog(currentActivity);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        dialog.setCancelable(true);
+        dialog.setContentView(R.layout.test);
+
+        TextView tvHealth = (TextView) dialog.findViewById(R.id.tvHealth);
+        TextView tvSecurity = (TextView) dialog.findViewById(R.id.tvSecurity);
+
+        tvHealth.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "123456789"));//change the number
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+                dialog.dismiss();
+            }
+        });
+        tvSecurity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "123456789"));//change the number
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }
