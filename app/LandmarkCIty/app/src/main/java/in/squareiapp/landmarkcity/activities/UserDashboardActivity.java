@@ -23,6 +23,11 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
 
 import in.squareiapp.landmarkcity.R;
 import in.squareiapp.landmarkcity.activities.featuresactivities.FriendsActivity;
@@ -40,8 +45,16 @@ import in.squareiapp.landmarkcity.fragments.HomeFragment;
 import in.squareiapp.landmarkcity.fragments.NewsFragment;
 import in.squareiapp.landmarkcity.fragments.NoticeFragment;
 import in.squareiapp.landmarkcity.fragments.UpdatesFragment;
+import in.squareiapp.landmarkcity.interfaces.NetworkResponseListener;
+import in.squareiapp.landmarkcity.utils.ApiURLS;
+import in.squareiapp.landmarkcity.utils.CommonUtils;
+import in.squareiapp.landmarkcity.utils.GPSTracker;
+import in.squareiapp.landmarkcity.utils.JsonParser;
+import in.squareiapp.landmarkcity.utils.Logger;
+import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
+import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
-public class UserDashboardActivity extends BaseActivity implements TabLayout.OnTabSelectedListener {
+public class UserDashboardActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, NetworkResponseListener {
     private NavigationView nav_view;
     private RelativeLayout fragmentContainer;
     private TabLayout tabs;
@@ -49,12 +62,35 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
     private DrawerLayout drawer_layout;
     private TextView toolbarTitle;
     private ImageView ivSOS;
+    private GPSTracker gps;
+    private final String TAG = getClass().getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
         startMyACtivtiy();
+    }
+
+    private String getStringLocation() {
+        gps = new GPSTracker(UserDashboardActivity.this);
+
+        // check if GPS enabled
+        if (gps.canGetLocation()) {
+
+            double latitude = gps.getLatitude();
+            double longitude = gps.getLongitude();
+
+            // \n is for new line
+            Toast.makeText(getApplicationContext(), "Your Location is - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+            return "" + latitude + "," + longitude;
+        } else {
+            // can't get location
+            // GPS or Network is not enabled
+            // Ask user to enable GPS/network in settings
+            gps.showSettingsAlert();
+            return "";
+        }
     }
 
     @Override
@@ -314,6 +350,9 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 }
                 startActivity(callIntent);
                 dialog.dismiss();
+                String location = getStringLocation();
+                if (!location.equals(""))
+                    continueToSos("0", location);
             }
         });
         tvSecurity.setOnClickListener(new View.OnClickListener() {
@@ -326,8 +365,53 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 }
                 startActivity(callIntent);
                 dialog.dismiss();
+                String location = getStringLocation();
+                if (!location.equals(""))
+                    continueToSos("0", location);
             }
         });
         dialog.show();
+    }
+
+
+    private void continueToSos(String type, String location) {
+        if (CommonUtils.isNetworkAvailable(context)) {
+
+            HashMap<String, String> hm = new HashMap<>();
+
+            hm.put("type", type);
+            hm.put("location", location);
+            hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
+
+            NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.SEND_SOS, ApiURLS.ApiId.SEND_SOS, ApiURLS.REQUEST_POST, hm, null, true);
+        } else {
+            showToast(getString(R.string.network_error), false);
+        }
+    }
+
+    @Override
+    public void onJsonResponse(ApiURLS.ApiId apiId, JSONObject jsonObjectResponse) {
+
+    }
+
+    @Override
+    public void onStringResponse(ApiURLS.ApiId apiId, String stringResponse) {
+        Logger.error(TAG, "" + stringResponse);
+        if (apiId == ApiURLS.ApiId.SEND_SOS) {
+            JsonParser jsonParser = new JsonParser(stringResponse);
+            int success = jsonParser.getSuccess();
+            int error = jsonParser.getError();
+            String message = jsonParser.getMessage();
+            if (success == 1 && error == 0) {
+                showToast(message, false);
+            } else {
+                showToast(message, false);
+            }
+        }
+    }
+
+    @Override
+    public void onErrorResponse(ApiURLS.ApiId apiId, String errorData, int responseCode) {
+
     }
 }
