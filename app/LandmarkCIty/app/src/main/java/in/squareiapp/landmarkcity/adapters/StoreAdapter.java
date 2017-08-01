@@ -15,35 +15,38 @@ import java.util.List;
 
 import in.squareiapp.landmarkcity.R;
 import in.squareiapp.landmarkcity.interfaces.CustomItemClickListener;
-import in.squareiapp.landmarkcity.models.NewsData;
+import in.squareiapp.landmarkcity.models.StoreData;
 import in.squareiapp.landmarkcity.utils.CommonUtils;
+import in.squareiapp.landmarkcity.utils.Logger;
 
 /**
- * Created by mohit kumar on 7/27/2017.
+ * Created by mohit kumar on 8/1/2017.
  */
 
-public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
+public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.MyViewHolder> {
     private final String TAG = getClass().getSimpleName();
     private CustomItemClickListener customItemClickListener;
-    private List<NewsData> usersPostsData;
+    private List<StoreData> usersPostsData;
     private Context context;
 
-
-    public NewsAdapter(CustomItemClickListener customItemClickListener, List<NewsData> usersPostsData, Context context) {
+    public StoreAdapter(CustomItemClickListener customItemClickListener, List<StoreData> usersPostsData, Context context) {
         this.customItemClickListener = customItemClickListener;
         this.usersPostsData = usersPostsData;
         this.context = context;
+        Logger.info(TAG, "===::setting title");
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Logger.info(TAG, "===::onCreateViewHolder()");
         View itemView = LayoutInflater.from(context)
-                .inflate(R.layout.row_news, parent, false);
-        return new NewsAdapter.MyViewHolder(itemView);
+                .inflate(R.layout.row_store, parent, false);
+        return new StoreAdapter.MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        Logger.info(TAG, "===::onBindViewHolder()");
         holder.bind(usersPostsData.get(position), position, customItemClickListener);
     }
 
@@ -55,33 +58,25 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView ivNewsImage;
-        TextView tvNews, tvNewsDate, tvNewsTime, tvNewsTitle;
+        TextView tvNews;
         CardView cardPost;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             tvNews = (TextView) itemView.findViewById(R.id.tvNews);
-            tvNewsDate = (TextView) itemView.findViewById(R.id.tvNewsDate);
-            tvNewsTime = (TextView) itemView.findViewById(R.id.tvNewsTime);
-            tvNewsTitle = (TextView) itemView.findViewById(R.id.tvNewsTitle);
             ivNewsImage = (ImageView) itemView.findViewById(R.id.ivNewsImage);
             cardPost = (CardView) itemView.findViewById(R.id.cardPost);
 
             /////////////////////set listeners/////////////////////
             cardPost.setOnClickListener(this);
-
         }
 
-        public void bind(NewsData usersPostsData, int position, CustomItemClickListener customItemClickListener) {
+        public void bind(StoreData usersPostsData, int position, CustomItemClickListener customItemClickListener) {
+            Logger.info(TAG, "===::binding view");
+            if (CommonUtils.isValidString(usersPostsData.getStoreIcon()))
+                Picasso.with(context).load(usersPostsData.getStoreIcon()).fit().into(ivNewsImage);
 
-         //   Logger.error("tag","=========news url::"+usersPostsData.getImage());
-            if (CommonUtils.isValidString(usersPostsData.getImage()))
-                Picasso.with(context).load("http:"+usersPostsData.getImage()).fit().into(ivNewsImage);
-
-            tvNews.setText(usersPostsData.getStory());
-            tvNewsTitle.setText(usersPostsData.getSite_title());
-            //  tvNewsDate.setText(usersPostsData.get());
-            //    tvNewsTime.setText(usersPostsData.getPostedBy());
+            tvNews.setText(usersPostsData.getStoreName());
 
         }
 
@@ -89,10 +84,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> 
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.cardPost:
-                      customItemClickListener.onItemClickCallback(getAdapterPosition(), 1);
+                    customItemClickListener.onItemClickCallback(getAdapterPosition(), 1);
                     break;
             }
         }
     }
 }
-

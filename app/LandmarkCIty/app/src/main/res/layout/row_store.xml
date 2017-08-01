@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardPost"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="1dp"
+    app:cardUseCompatPadding="true"
+    app:elevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/dp4"
+        android:paddingTop="@dimen/dp4">
+
+        <ImageView
+            android:id="@+id/ivNewsImage"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/dp4"
+            android:layout_marginRight="@dimen/dp8"
+            android:scaleType="fitXY"
+            android:src="@drawable/news_pic" />
+
+        <in.squareiapp.landmarkcity.custom_views.AppTextView
+            android:id="@+id/tvNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivNewsImage"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/dp8"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/text_dark_dark"
+            android:textSize="@dimen/font_16"
+            tools:text="Medicine" />
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

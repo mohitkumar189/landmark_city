@@ -50,6 +50,7 @@
                         android:layout_toLeftOf="@+id/relativeWeatherContainer">
 
                         <ImageView
+                            android:id="@+id/ivSOS"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_centerHorizontal="true"
@@ -70,15 +71,15 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/sun"
-                            android:scaleType="fitXY"/>
+                            android:scaleType="fitXY"
+                            android:src="@drawable/sun" />
 
                         <TextView
                             android:id="@+id/tvTemp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
                             android:layout_marginLeft="3dp"
+                            android:layout_marginTop="12dp"
                             android:text="33"
                             android:textColor="@color/black"
                             android:textSize="@dimen/font_10" />
@@ -86,8 +87,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/tvTemp"
                             android:layout_marginTop="7dp"
+                            android:layout_toRightOf="@+id/tvTemp"
                             android:text="o"
                             android:textColor="@color/black"
                             android:textSize="8sp"
@@ -120,6 +121,7 @@
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
+
 
         </RelativeLayout>
 
