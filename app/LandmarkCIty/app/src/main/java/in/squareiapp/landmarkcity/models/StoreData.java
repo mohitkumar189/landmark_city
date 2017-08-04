@@ -5,7 +5,31 @@ package in.squareiapp.landmarkcity.models;
  */
 
 public class StoreData {
-    private String storeName, storeIcon, id, owner, bname, address, timing, phone, images, note;
+    private String storeName, storeIcon, id, owner, bname, address, timing, phone, images, note, location, svgIcon, storeType;
+
+    public String getStoreType() {
+        return storeType;
+    }
+
+    public void setStoreType(String storeType) {
+        this.storeType = storeType;
+    }
+
+    public String getSvgIcon() {
+        return svgIcon;
+    }
+
+    public void setSvgIcon(String svgIcon) {
+        this.svgIcon = svgIcon;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public String getStoreName() {
         return storeName;

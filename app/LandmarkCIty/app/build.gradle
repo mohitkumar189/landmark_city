@@ -27,6 +27,12 @@ android {
             abortOnError false
         }
     }
+    repositories {
+        jcenter() // For production builds.
+        maven {
+            url 'http://oss.jfrog.org/artifactory/oss-snapshot-local' // For snapshots.
+        }
+    }
 }
 
 dependencies {
@@ -47,4 +53,6 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.mikhaellopez:circularimageview:3.0.2'
     testCompile 'junit:junit:4.12'
+    compile 'com.google.android.gms:play-services:10.2.6'
+    compile 'com.jlubecki.soundcloud:soundcloud-api:1.2.1'
 }

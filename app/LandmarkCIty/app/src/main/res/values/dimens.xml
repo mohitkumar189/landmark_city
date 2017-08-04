@@ -26,7 +26,7 @@
 
 
     <dimen name="logo_width">280dp</dimen>
-    <dimen name="logo_height">165dp</dimen>
+    <dimen name="logo_height">183dp</dimen>
     <dimen name="dp6">6dp</dimen>
     <dimen name="dp10">10dp</dimen>
 </resources>

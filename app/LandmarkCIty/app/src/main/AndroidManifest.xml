@@ -7,6 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission
+        android:name="com.app.schoolapp.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
 
     <application
         android:name=".application.LandmarkCityApplication"
@@ -16,6 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCSjLLOLKHSQCUkSUa4oBc07CoylbN4phI" />
+
         <activity
             android:name=".activities.SplashActivity"
             android:noHistory="true"
@@ -64,7 +71,15 @@
         <activity
             android:name=".activities.featuresactivities.MapActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+            <!--        <intent-filter>
+                        <action android:name="android.intent.action.SEARCH" />
+                    </intent-filter>
+        -->
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
         <activity
             android:name=".activities.featuresactivities.RewardsActivity"
             android:screenOrientation="portrait"

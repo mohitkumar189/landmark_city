@@ -28,6 +28,7 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
     private Button btnResetPassword;
     private TextView textLogin;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +47,8 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
         editUserName = (EditText) findViewById(R.id.editUserName);
         btnResetPassword = (Button) findViewById(R.id.btnResetPassword);
         textLogin = (TextView) findViewById(R.id.textLogin);
+        btnResetPassword.setTypeface(myTypeface);
+
     }
 
     @Override
@@ -109,9 +112,9 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
         Logger.error(TAG, "" + stringResponse);
         JsonParser jsonParser = new JsonParser(stringResponse);
         int success = jsonParser.getSuccess();
-        int error = jsonParser.getError();
+        // int error = jsonParser.getError();
         String message = jsonParser.getMessage();
-        if (success == 1 && error == 0) {
+        if (success == 1) {
             Intent intent = new Intent(currentActivity, ResetPasswordActivity.class);
             intent.putExtra("username", editUserName.getText().toString().trim());
             Logger.info(TAG, "sending username::" + editUserName.getText().toString().trim());

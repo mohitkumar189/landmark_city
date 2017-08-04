@@ -82,7 +82,6 @@ public class StoresListActivity extends BaseActivity implements NetworkResponseL
         String client_id = SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID);
         String url = ApiURLS.GET_STORES + "?client_id=" + client_id + "&type=" + storeId;
         networkRequestHandler.getStringResponse(url, ApiURLS.ApiId.GET_STORES, ApiURLS.REQUEST_GET, null, null, true);
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package in.squareiapp.landmarkcity.activities.useraccesspackage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
@@ -55,6 +56,7 @@ public class ResetPasswordActivity extends BaseActivity implements NetworkRespon
         editDigit4 = (EditText) findViewById(R.id.editDigit4);
         tvResend = (TextView) findViewById(R.id.tvResend);
         btnReset = (Button) findViewById(R.id.btnReset);
+      //  btnReset.setTypeface(myTypeface);
     }
 
     private void continueResetPassword() {
@@ -129,6 +131,19 @@ public class ResetPasswordActivity extends BaseActivity implements NetworkRespon
             String message = jsonParser.getMessage();
             if (success == 1 && error == 0) {
                 showToast(message, false);
+
+            } else {
+                showToast(message, false);
+            }
+        } else if (apiId == ApiURLS.ApiId.RESET_PASSWORD) {
+            JsonParser jsonParser = new JsonParser(stringResponse);
+            int success = jsonParser.getSuccess();
+            //   int error = jsonParser.getError();
+            String message = jsonParser.getMessage();
+            if (success == 1) {
+                showToast(message, false);
+                startActivity(new Intent(currentActivity, LoginActivity.class));
+                finish();
 
             } else {
                 showToast(message, false);

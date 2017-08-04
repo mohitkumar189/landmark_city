@@ -78,6 +78,7 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
         ivTwitter = (ImageView) findViewById(R.id.ivTwitter);
 
         btnRegister = (Button) findViewById(R.id.btnRegister);
+     //   btnRegister.setTypeface(myTypeface);
 
         spinnerUser = (Spinner) findViewById(R.id.spinnerUser);
     }

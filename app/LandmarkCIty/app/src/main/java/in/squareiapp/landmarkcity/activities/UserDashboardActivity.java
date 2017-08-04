@@ -70,6 +70,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_dashboard);
         startMyACtivtiy();
+        askForPermission();
     }
 
     private String getStringLocation() {

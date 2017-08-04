@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="in.squareiapp.landmarkcity.activities.featuresactivities.ProfileActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/profile_back"
+            android:paddingBottom="@dimen/dp24">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="@dimen/dp8"
+                android:layout_marginTop="@dimen/dp8"
+                android:padding="@dimen/dp2"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_left_arrow_svg" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:src="@drawable/user_image"
+                app:civ_border_color="#ffffff"
+                app:civ_border_width="2dp" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ivProfile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp8"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_14"
+                tools:text="Mohit Kumar" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/tvUserStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvUserName"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp4"
+                android:textColor="@color/white"
+                android:textSize="@dimen/font_12"
+                tools:text="Mohit Kumar" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp4"
+            android:padding="@dimen/dp12">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/dp4"
+                android:src="@drawable/call" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/editUserMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvName"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp4"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="+91-xxxxxxxxxx"
+                android:padding="@dimen/dp2"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp12">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/dp4"
+                android:src="@drawable/mail" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/editUserEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvName"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp4"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="abc@xyz.com"
+                android:padding="@dimen/dp2"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_16" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp12">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/dp4"
+                android:src="@drawable/location" />
+
+            <in.squareiapp.landmarkcity.custom_views.AppTextView
+                android:id="@+id/editUserAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvName"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dp4"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:hint="404, obs building Noida-201302"
+                android:padding="@dimen/dp2"
+                android:singleLine="true"
+                android:textColor="@color/text_dark"
+                android:textColorHint="@color/text_hint"
+                android:textSize="@dimen/font_16" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

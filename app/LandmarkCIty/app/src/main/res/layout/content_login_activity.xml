@@ -65,7 +65,8 @@
                     android:inputType="text"
                     android:singleLine="true"
                     android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/font_14" />
+                    android:textSize="@dimen/font_14"
+                    />
             </RelativeLayout>
 
             <RelativeLayout
@@ -139,7 +140,7 @@
                 android:layout_below="@+id/btnLogin"
                 android:layout_marginTop="@dimen/dp12"
                 android:text="@string/registerText"
-                android:textColor="@color/text_light"
+                android:textColor="@color/text_dark"
                 android:textSize="@dimen/font_14"></in.squareiapp.landmarkcity.custom_views.AppTextView>
 
             <in.squareiapp.landmarkcity.custom_views.AppTextView

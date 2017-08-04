@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -39,8 +40,11 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
     public ProgressDialog pdialog;
     public Dialog customDialog;
     public Toolbar toolbar;
+    private final String FONT = "fonts/avanti_regular.ttf";
+    public Typeface myTypeface;
 
-    private String[] PERMISSIONS = {Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION};
+    private String[] PERMISSIONS = {Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE};
     private int PERMISSION_ALL = 1;
 
     protected abstract void initContext();
@@ -57,6 +61,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Navigati
         initListners();
         initToolbar();
         Logger.info(TAG, "Activity is initialized for context :: " + context);
+
+     //   myTypeface = Typeface.createFromAsset(getAssets(), "fonts/avanti_regular.ttf");
     }
 
     protected void toHideKeyboard() {

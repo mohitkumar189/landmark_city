@@ -66,6 +66,7 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
         ivGoogle.setOnClickListener(this);
         ivTwitter.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
+       // btnLogin.setTypeface(myTypeface);
     }
 
     @Override

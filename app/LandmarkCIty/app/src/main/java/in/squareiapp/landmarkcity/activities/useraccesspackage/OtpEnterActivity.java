@@ -76,6 +76,7 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
 
         btnVerify = (Button) findViewById(R.id.btnVerify);
         tvResend = (TextView) findViewById(R.id.tvResend);
+       // btnVerify.setTypeface(myTypeface);
     }
 
     @Override

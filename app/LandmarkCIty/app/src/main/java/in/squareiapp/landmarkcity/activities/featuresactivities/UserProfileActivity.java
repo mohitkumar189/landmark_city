@@ -124,9 +124,10 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
         hm.put("gender", editGender.getText().toString().trim());
         //   hm.put("prof_status",editUserName.getText().toString().trim());
         //  hm.put("profilepic",editUserName.getText().toString().trim());
-        hm.put("mobile", editUserMobile.getText().toString().trim());
+        hm.put("phone", editUserMobile.getText().toString().trim());
+        hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
 
-        networkRequestHandler.getStringResponse(ApiURLS.GET_PROFILE, ApiURLS.ApiId.GET_PROFILE, ApiURLS.REQUEST_PUT, hm, null, false);
+        networkRequestHandler.getStringResponse(ApiURLS.GET_PROFILE, ApiURLS.ApiId.GET_PROFILE, ApiURLS.REQUEST_PUT, hm, null, true);
     }
 
     @Override
