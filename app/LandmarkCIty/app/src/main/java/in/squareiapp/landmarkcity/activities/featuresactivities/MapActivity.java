@@ -62,21 +62,36 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Net
     private List<StoreData> storeListData;
     private StoreListHorizontalAdapter storeAdapter;
     private boolean a = false;
+    private LatLng receivedLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         startMyACtivtiy();
+        Intent intent = getIntent();
         storeData = new ArrayList<>();
         storeListData = new ArrayList<>();
         if (!a)
             getStoresList();
         a = true;
-        Intent intent = getIntent();
         if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
             String query = intent.getStringExtra(SearchManager.QUERY);
             //   doMySearch(query);
+        }
+
+        if (intent.getExtras() != null) {
+            Logger.info(TAG, "LOCATION intent is found");
+            Bundle bundle = intent.getExtras();
+            if (bundle.containsKey("storeLocation")) {
+                Logger.info(TAG, bundle.getString("storeLocation"));
+                String[] loc = bundle.getString("storeLocation").split(",");
+                receivedLocation = new LatLng(Double.parseDouble(loc[0]), Double.parseDouble(loc[1]));
+
+
+            } else {
+                Logger.info(TAG, "LOCATION does not exists");
+            }
         }
 
     }
@@ -168,7 +183,11 @@ public class MapActivity extends BaseActivity implements OnMapReadyCallback, Net
                 .add(new LatLng(25.197992, 75.824986))
                 .add(new LatLng(25.199229, 75.832438)).width(7)
                 .color(Color.RED));
+        if (receivedLocation != null) {
+            googleMap.addMarker(new MarkerOptions().position(receivedLocation).title(""));
 
+            //  googleMap.addMarker(receivedLocation);
+        }
     }
 
     @Override

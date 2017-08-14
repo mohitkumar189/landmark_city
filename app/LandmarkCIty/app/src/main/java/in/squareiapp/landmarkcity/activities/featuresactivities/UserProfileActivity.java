@@ -70,6 +70,7 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
         btnSubmit.setOnClickListener(this);
         editGender.setOnClickListener(this);
         ivBack.setOnClickListener(this);
+        ivProfile.setOnClickListener(this);
     }
 
     @Override
@@ -94,6 +95,8 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
                 break;
             case R.id.ivBack:
                 finish();
+                break;
+            case R.id.ivProfile:
                 break;
         }
     }
@@ -128,6 +131,10 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
         hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
 
         networkRequestHandler.getStringResponse(ApiURLS.GET_PROFILE, ApiURLS.ApiId.GET_PROFILE, ApiURLS.REQUEST_PUT, hm, null, true);
+    }
+
+    private void updateProfilePic() {
+
     }
 
     @Override

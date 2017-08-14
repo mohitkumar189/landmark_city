@@ -113,6 +113,12 @@ public class StoreListADapter extends RecyclerView.Adapter<StoreListADapter.MyVi
                 case R.id.cardPost:
                     customItemClickListener.onItemClickCallback(getAdapterPosition(), 1);
                     break;
+                case R.id.tvCall:
+                    customItemClickListener.onItemClickCallback(getAdapterPosition(), 2);
+                    break;
+                case R.id.tvLocation:
+                    customItemClickListener.onItemClickCallback(getAdapterPosition(), 3);
+                    break;
             }
         }
     }

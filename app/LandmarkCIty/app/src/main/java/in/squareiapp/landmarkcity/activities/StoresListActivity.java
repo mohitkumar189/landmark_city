@@ -1,8 +1,12 @@
 package in.squareiapp.landmarkcity.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -17,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.squareiapp.landmarkcity.R;
+import in.squareiapp.landmarkcity.activities.featuresactivities.MapActivity;
 import in.squareiapp.landmarkcity.adapters.StoreListADapter;
 import in.squareiapp.landmarkcity.interfaces.CustomItemClickListener;
 import in.squareiapp.landmarkcity.interfaces.NetworkResponseListener;
@@ -135,6 +140,7 @@ public class StoresListActivity extends BaseActivity implements NetworkResponseL
                     String phone = jobj.getString("phone");
                     String images = jobj.getString("images");
                     String note = jobj.getString("note");
+                    String location=jobj.getString("loc");
                     StoreData data = new StoreData();
                     data.setId(id);
                     data.setStoreIcon(image);
@@ -144,6 +150,7 @@ public class StoresListActivity extends BaseActivity implements NetworkResponseL
                     data.setTiming(timing);
                     data.setPhone(phone);
                     data.setImages(images);
+                    data.setLocation(location);
                     data.setNote(note);
                     storeData.add(data);
                 } catch (JSONException e) {
@@ -164,7 +171,23 @@ public class StoresListActivity extends BaseActivity implements NetworkResponseL
 
     @Override
     public void onItemClickCallback(int position, int flag) {
-
+        switch (flag) {
+            case 1:
+                break;
+            case 2:
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + storeData.get(position).getPhone()));//change the number
+                if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    return;
+                }
+                startActivity(callIntent);
+                break;
+            case 3:
+                Intent intent = new Intent(currentActivity, MapActivity.class);
+                intent.putExtra("storeLocation", storeData.get(position).getLocation());
+                startActivity(intent);
+                break;
+        }
     }
 }
 
