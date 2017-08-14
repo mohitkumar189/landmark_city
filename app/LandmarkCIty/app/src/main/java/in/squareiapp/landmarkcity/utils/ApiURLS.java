@@ -27,6 +27,11 @@ public class ApiURLS {
     public static final String GET_NEWS = BASE_URL + "news";
     public static final String GET_UPDATES = BASE_URL + "update/get";
     public static final String GET_PROFILE = BASE_URL + "profile";
+<<<<<<< HEAD
+
+    public enum ApiId {
+        USER_REGISTER_URL, USER_LOGIN_URL, USER_RESET_PASSWORD, RESET_PASSWORD, USER_VERIFY_OTP, USER_RESEND_OTP, USERS_POST, POST_LIKE, GET_NOTICE, GET_NEWS, GET_UPDATES, GET_PROFILE
+=======
     public static final String GET_FRIENDS = BASE_URL + "friend";
     public static final String GET_FRIENDS_REQUESTS = BASE_URL + "friend/requests";
     public static final String GET_FRIENDS_SUGGESTIONS = BASE_URL + "friend/suggestions";
@@ -39,7 +44,12 @@ public class ApiURLS {
     public enum ApiId {
         USER_REGISTER_URL, USER_LOGIN_URL, USER_RESET_PASSWORD, RESET_PASSWORD, USER_VERIFY_OTP,
         USER_RESEND_OTP, USERS_POST, POST_LIKE, GET_NOTICE, GET_NEWS, GET_UPDATES, GET_PROFILE,
+<<<<<<< HEAD
         GET_FRIENDS, GET_FRIENDS_SUGGESTIONS, SEND_FRIEND_REQUEST, GET_STORES_CATEGORIES, GET_STORES, SEND_SOS,SEARCH_STORES
+=======
+        GET_FRIENDS, GET_FRIENDS_SUGGESTIONS, SEND_FRIEND_REQUEST, GET_STORES_CATEGORIES, GET_STORES, SEND_SOS
+>>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
+>>>>>>> a1402c775a3218c951a2558d0f947da1a8047aa6
     }
 
 }

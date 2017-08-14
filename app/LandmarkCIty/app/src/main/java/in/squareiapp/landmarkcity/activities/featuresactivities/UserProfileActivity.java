@@ -108,7 +108,11 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
 
         String url = ApiURLS.GET_PROFILE + "?client_id=" + client_id;
         //   NetworkRequestHandler.getInstance(context, this).getStringResponse(url, ApiURLS.ApiId.GET_NEWS, ApiURLS.REQUEST_GET, null, null, false);
+<<<<<<< HEAD
+        networkRequestHandler.getStringResponse(url, ApiURLS.ApiId.GET_PROFILE, ApiURLS.REQUEST_GET, null, null, false);
+=======
         networkRequestHandler.getStringResponse(url, ApiURLS.ApiId.GET_PROFILE, ApiURLS.REQUEST_GET, null, null, true);
+>>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
 
     }
 
