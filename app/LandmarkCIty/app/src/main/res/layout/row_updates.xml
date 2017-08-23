@@ -29,11 +29,8 @@
             android:layout_centerVertical="true"
             android:padding="@dimen/dp2"
             android:visibility="gone"
-<<<<<<< HEAD
             tools:src="@drawable/video_icon" />
-=======
-            android:src="@drawable/video_icon" />
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
+
 
         <in.squareiapp.landmarkcity.custom_views.AppTextView
             android:id="@+id/tvUpdateTitle"

@@ -25,10 +25,6 @@ import in.squareiapp.landmarkcity.utils.ApiURLS;
 import in.squareiapp.landmarkcity.utils.CommonUtils;
 import in.squareiapp.landmarkcity.utils.Logger;
 
-import static in.squareiapp.landmarkcity.R.id.ivImageComment;
-import static in.squareiapp.landmarkcity.R.id.ivImageLike;
-import static in.squareiapp.landmarkcity.R.id.ivShare;
-
 /**
  * Created by mohit kumar on 7/28/2017.
  */
@@ -44,42 +40,26 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
         this.customItemClickListener = customItemClickListener;
         this.usersPostsData = usersPostsData;
         this.context = context;
-<<<<<<< HEAD
         Logger.info(TAG, "calling constructor for::" + TAG);
-=======
-        // Logger.info(TAG, "calling constructor for::" + TAG);
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(context)
                 .inflate(R.layout.row_updates, parent, false);
-<<<<<<< HEAD
         Logger.info(TAG, "returning view");
-=======
-        //     Logger.info(TAG, "returning view");
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
         return new UpdatesAdapter.MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-<<<<<<< HEAD
         Logger.info(TAG, "binding view");
-=======
-        //    Logger.info(TAG, "binding view");
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
         holder.bind(usersPostsData.get(position), position, customItemClickListener);
     }
 
     @Override
     public int getItemCount() {
-<<<<<<< HEAD
         Logger.info(TAG, "item size::" + usersPostsData.size());
-=======
-        //   Logger.info(TAG, "item size::" + usersPostsData.size());
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
         return usersPostsData.size();
     }
 
@@ -113,17 +93,12 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
 
             try {
                 u = ApiURLS.BASE_URL + jsonArray.get(0);
-<<<<<<< HEAD
-            //    Logger.info("=============", u);
-=======
                 Picasso.with(context).load(u).into(ivUpdateImage);
                 Logger.info("=============", u);
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-<<<<<<< HEAD
             if (CommonUtils.isValidString(u))
                 Picasso.with(context).load(u).into(ivUpdateImage);
 
@@ -134,20 +109,21 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                 if (ivUpdateType.getVisibility() == View.GONE) {
                     //    Logger.info("tag", "====================showing image icon");
                     ivUpdateType.setVisibility(View.VISIBLE);
-=======
 
-            tvUpdateTitle.setText(usersPostsData.getTitle());
-            Logger.info("=============Conent type", usersPostsData.getPost_type()+" "+usersPostsData.getId());
-            if (CommonUtils.getContentType(usersPostsData.getPost_type()).equals(CommonUtils.DocumentType.VIDEO.name())) {
-                 Logger.info("tag", "====================type equal");
-                if (ivUpdateType.getVisibility() == View.GONE) {
-                        Logger.info("tag", "====================showing image icon");
-                    ivUpdateType.setVisibility(View.VISIBLE);
-                    ivUpdateImage.setImageResource(R.drawable.videoback);
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
+                    tvUpdateTitle.setText(usersPostsData.getTitle());
+                    Logger.info("=============Conent type", usersPostsData.getPost_type() + " " + usersPostsData.getId());
+                    if (CommonUtils.getContentType(usersPostsData.getPost_type()).equals(CommonUtils.DocumentType.VIDEO.name())) {
+                        Logger.info("tag", "====================type equal");
+                        if (ivUpdateType.getVisibility() == View.GONE) {
+                            Logger.info("tag", "====================showing image icon");
+                            ivUpdateType.setVisibility(View.VISIBLE);
+                            ivUpdateImage.setImageResource(R.drawable.videoback);
+                        }
+                    }
                 }
             }
         }
+
 
         @Override
         public void onClick(View v) {
@@ -155,29 +131,24 @@ public class UpdatesAdapter extends RecyclerView.Adapter<UpdatesAdapter.MyViewHo
                 case R.id.cardPost:
                     customItemClickListener.onItemClickCallback(getAdapterPosition(), 1);
                     break;
-                case ivImageLike:
+                case R.id.ivImageLike:
                     customItemClickListener.onItemClickCallback(getAdapterPosition(), 2);
                     break;
-                case ivImageComment:
+                case R.id.ivImageComment:
                     customItemClickListener.onItemClickCallback(getAdapterPosition(), 3);
                     break;
-                case ivShare:
+                case R.id.ivShare:
                     customItemClickListener.onItemClickCallback(getAdapterPosition(), 4);
                 case R.id.ivUpdateType:
 
                     if (CommonUtils.getContentType(usersPostsData.get(getAdapterPosition()).getPost_type()).equals(CommonUtils.DocumentType.VIDEO.name())) {
                         //  String u = ApiURLS.BASE_URL + jsonArray.get(0);
-<<<<<<< HEAD
-                        Logger.info("tag", "Playing video");
-                        Intent intent = new Intent(context, VideoPlayerActivity.class);
                         Logger.info("tag", "sending url::" + u);
-=======
                         //   Logger.info("tag", "Playing video");
-                        Intent intent = new Intent(context, VideoPlayerActivity.class);
+                        Intent intent1 = new Intent(context, VideoPlayerActivity.class);
                         //   Logger.info("tag", "sending url::" + u);
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
-                        intent.putExtra("videourl", u);
-                        context.startActivity(intent);
+                        intent1.putExtra("videourl", u);
+                        context.startActivity(intent1);
                     }
                     //  customItemClickListener.onItemClickCallback(getAdapterPosition(), 5);
                     break;

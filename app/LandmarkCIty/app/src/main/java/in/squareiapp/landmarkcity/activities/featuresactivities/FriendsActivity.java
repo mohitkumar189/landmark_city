@@ -1,13 +1,5 @@
 package in.squareiapp.landmarkcity.activities.featuresactivities;
 
-<<<<<<< HEAD
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
-import in.squareiapp.landmarkcity.R;
-
-public class FriendsActivity extends AppCompatActivity {
-=======
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -40,6 +32,7 @@ import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler2;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
+
 public class FriendsActivity extends BaseActivity implements NetworkResponseListener, CustomItemClickListener {
     private final String TAG = getClass().getSimpleName();
     private RecyclerView recyclerFriends, recyclerSuggestions;
@@ -48,14 +41,10 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
     private FriendsAdapter friendsAdapter;
     private FriendSuggestionAdapter suggestionAdapter;
     private int pos = -1;
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
-<<<<<<< HEAD
-=======
         startMyACtivtiy();
         getFriendsList();
         getFriendsSuggestions();
@@ -257,6 +246,5 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
         } else {
             showToast(getString(R.string.network_error), false);
         }
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
     }
 }

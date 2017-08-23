@@ -30,7 +30,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 
 import in.squareiapp.landmarkcity.R;
-import in.squareiapp.landmarkcity.activities.featuresactivities.FriendsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.GreetingsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.MapActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.MusicActivity;
@@ -38,10 +37,7 @@ import in.squareiapp.landmarkcity.activities.featuresactivities.RewardsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.SettingActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.ShareLocationActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.StoreActivity;
-<<<<<<< HEAD
-=======
 import in.squareiapp.landmarkcity.activities.featuresactivities.UserChatActivity;
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
 import in.squareiapp.landmarkcity.activities.featuresactivities.UserProfileActivity;
 import in.squareiapp.landmarkcity.adapters.ViewPagerAdapter;
 import in.squareiapp.landmarkcity.fragments.HomeFragment;
@@ -168,19 +164,13 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 break;
             case R.id.nav_friend:
                 drawer_layout.closeDrawer(nav_view);
-<<<<<<< HEAD
+
                 startNewActivity(currentActivity, UserProfileActivity.class);
                 break;
             case R.id.nav_chat:
                 drawer_layout.closeDrawer(nav_view);
-                startNewActivity(currentActivity, FriendsActivity.class);
-=======
-                startNewActivity(currentActivity, FriendsActivity.class);
-                break;
-            case R.id.nav_chat:
-                drawer_layout.closeDrawer(nav_view);
                 startNewActivity(currentActivity, UserChatActivity.class);
->>>>>>> 62a698070e38b72a4dce0c565da48437d02b1377
+
                 break;
             case R.id.nav_music:
                 drawer_layout.closeDrawer(nav_view);
