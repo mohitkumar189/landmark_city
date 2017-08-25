@@ -20,6 +20,7 @@ public class SharedPrefUtils {
     public static final String LOGIN_STATUS = "islogin";
     public static final String CLIENT_ID = "clientid";
     public static final String USER_NAME = "username";
+    public static final String OTP_STATUS = "otp_status";
 
     private SharedPrefUtils() {
 

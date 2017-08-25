@@ -3,10 +3,13 @@ package in.squareiapp.landmarkcity.activities.useraccesspackage;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.json.JSONException;
@@ -25,19 +28,22 @@ import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
-public class LoginActivity extends BaseActivity implements NetworkResponseListener {
+public class LoginActivity extends BaseActivity implements NetworkResponseListener, View.OnTouchListener {
     private final String TAG = getClass().getSimpleName();
 
     private EditText editUserName, editPassword;
     private Button btnLogin;
-    private TextView textForgotPassword, textRegister;
+    private TextView textForgotPassword;
+    private LinearLayout textRegister ;
     private ImageView ivFacebook, ivGoogle, ivTwitter;
+    private ScrollView parentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         startMyACtivtiy();
+
     }
 
     @Override
@@ -49,13 +55,15 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
     @Override
     protected void initViews() {
         editUserName = (EditText) findViewById(R.id.editUserName);
+        parentView = (ScrollView) findViewById(R.id.mainScrollLayout);
         editPassword = (EditText) findViewById(R.id.editPassword);
         textForgotPassword = (TextView) findViewById(R.id.textForgotPassword);
-        textRegister = (TextView) findViewById(R.id.textRegister);
+        textRegister = (LinearLayout) findViewById(R.id.textRegister);
         btnLogin = (Button) findViewById(R.id.btnLogin);
         ivFacebook = (ImageView) findViewById(R.id.ivFacebook);
         ivGoogle = (ImageView) findViewById(R.id.ivGoogle);
         ivTwitter = (ImageView) findViewById(R.id.ivTwitter);
+
     }
 
     @Override
@@ -67,6 +75,8 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
         ivTwitter.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
        // btnLogin.setTypeface(myTypeface);
+
+        parentView.setOnTouchListener(this);
     }
 
     @Override
@@ -170,5 +180,11 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
     @Override
     public void onErrorResponse(ApiURLS.ApiId apiId, String errorData, int responseCode) {
         Logger.error(TAG, "" + errorData);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        toHideKeyboard();
+        return false;
     }
 }

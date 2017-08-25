@@ -12,12 +12,15 @@ import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -34,19 +37,20 @@ import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
-public class OtpEnterActivity extends BaseActivity implements View.OnFocusChangeListener, View.OnKeyListener, TextWatcher, NetworkResponseListener {
+public class OtpEnterActivity extends BaseActivity implements View.OnFocusChangeListener, View.OnKeyListener, TextWatcher, NetworkResponseListener, View.OnTouchListener {
     private final String TAG = getClass().getSimpleName();
 
     private EditText editDigit1, editDigit2, editDigit3, editDigit4, editDigitHidden;
     private Button btnVerify;
     private TextView tvResend;
     private String apikey;
+    private ScrollView parentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_otp_enter);
-      //  setContentView((new MainLayout(this, null)));
+        setContentView(R.layout.activity_otp_enter);
+        //  setContentView((new MainLayout(this, null)));
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
@@ -56,6 +60,7 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
             }
         }
 
+        SharedPrefUtils.getInstance(context).putBoolean(SharedPrefUtils.OTP_STATUS, true);
         startMyACtivtiy();
         // Bundle b=getIntent().getBundleExtra("");
     }
@@ -73,17 +78,19 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
         editDigit3 = (EditText) findViewById(R.id.editDigit3);
         editDigit4 = (EditText) findViewById(R.id.editDigit4);
         editDigitHidden = (EditText) findViewById(R.id.editDigitHidden);
+        parentLayout = (ScrollView)findViewById(R.id.parentLayout);
 
         btnVerify = (Button) findViewById(R.id.btnVerify);
         tvResend = (TextView) findViewById(R.id.tvResend);
-       // btnVerify.setTypeface(myTypeface);
+        // btnVerify.setTypeface(myTypeface);
     }
 
     @Override
     protected void initListners() {
         btnVerify.setOnClickListener(this);
         tvResend.setOnClickListener(this);
-      //  setPINListeners();
+        parentLayout.setOnTouchListener(this);
+        //  setPINListeners();
     }
 
     @Override
@@ -100,20 +107,29 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnVerify:
-                continueVerifyOtp();
+                if (editDigit1.getText().length() == 0) {
+                    Toast.makeText(this, R.string.otp_error, Toast.LENGTH_SHORT).show();
+                } else {
+                    continueVerifyOtp();
+                }
                 break;
             case R.id.tvResend:
-                continueResendOtp();
+                if (editDigit1.getText().length() == 0 ) {
+                    Toast.makeText(this, R.string.otp_error, Toast.LENGTH_SHORT).show();
+                } else {
+                    continueResendOtp();
+                }
+
                 break;
         }
     }
 
     private void continueVerifyOtp() {
-      //  String otp = editDigit1.getText().toString().trim() + editDigit2.getText().toString().trim() + editDigit3.getText().toString().trim() + editDigit4.getText().toString().trim();
+
         if (CommonUtils.isNetworkAvailable(context)) {
             HashMap<String, String> hm = new HashMap<>();
             hm.put("otp", editDigit1.getText().toString().trim());
-            hm.put("client_id", apikey);
+            hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
 
             NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_VERIFY_OTP, ApiURLS.ApiId.USER_VERIFY_OTP, ApiURLS.REQUEST_POST, hm, null, true);
         } else {
@@ -122,11 +138,11 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
     }
 
     private void continueResendOtp() {
-        String otp = editDigit1.getText().toString().trim() + editDigit2.getText().toString().trim() + editDigit3.getText().toString().trim() + editDigit4.getText().toString().trim();
+
         if (CommonUtils.isNetworkAvailable(context)) {
             HashMap<String, String> hm = new HashMap<>();
-         //   hm.put("otp", otp);
-            hm.put("client_id", apikey);
+            //   hm.put("otp", otp);
+            hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
 
             NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_RESEND_OTP, ApiURLS.ApiId.USER_RESEND_OTP, ApiURLS.REQUEST_POST, hm, null, true);
         } else {
@@ -322,6 +338,7 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
                 showToast(message, false);
                 SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.CLIENT_ID, apikey);
                 SharedPrefUtils.getInstance(context).putBoolean(SharedPrefUtils.LOGIN_STATUS, true);
+                SharedPrefUtils.getInstance(context).putBoolean(SharedPrefUtils.OTP_STATUS, false);
                 startNewActivity(currentActivity, UserDashboardActivity.class);
             } else {
                 showToast(message, false);
@@ -334,6 +351,12 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
     @Override
     public void onErrorResponse(ApiURLS.ApiId apiId, String errorData, int responseCode) {
         Logger.error(TAG, "" + errorData);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        toHideKeyboard();
+        return false;
     }
 
 
@@ -360,8 +383,8 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
                     // setDefaultPinBackground(editDigit1);
                 }
             }
-
             super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         }
     }
+
 }

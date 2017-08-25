@@ -4,12 +4,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 
 import org.json.JSONException;
@@ -27,8 +29,9 @@ import in.squareiapp.landmarkcity.utils.CommonUtils;
 import in.squareiapp.landmarkcity.utils.JsonParser;
 import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
+import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
-public class UserRegisterActivity extends BaseActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener, NetworkResponseListener {
+public class UserRegisterActivity extends BaseActivity implements AdapterView.OnItemClickListener, AdapterView.OnItemSelectedListener, NetworkResponseListener, View.OnTouchListener {
     private final String TAG = getClass().getSimpleName();
 
     private EditText editName, editUserName, editPassword, editUser;
@@ -38,6 +41,7 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
     private Toolbar toolbar;
     private List<String> userTypes = new ArrayList<String>();
     private String userType = "";
+    private ScrollView parentLayout;
 
 
     @Override
@@ -71,15 +75,13 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
         editPassword = (EditText) findViewById(R.id.editPassword);
         editUser = (EditText) findViewById(R.id.editUser);
         imageSpinner = (ImageView) findViewById(R.id.imageSpinner);
+        parentLayout = (ScrollView) findViewById(R.id.parentLayout);
         //  imageSpinner.bringToFront();
-
         ivFacebook = (ImageView) findViewById(R.id.ivFacebook);
         ivGoogle = (ImageView) findViewById(R.id.ivGoogle);
         ivTwitter = (ImageView) findViewById(R.id.ivTwitter);
-
         btnRegister = (Button) findViewById(R.id.btnRegister);
      //   btnRegister.setTypeface(myTypeface);
-
         spinnerUser = (Spinner) findViewById(R.id.spinnerUser);
     }
 
@@ -91,6 +93,7 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
         ivTwitter.setOnClickListener(this);
         imageSpinner.setOnClickListener(this);
         spinnerUser.setOnItemSelectedListener(this);
+        parentLayout.setOnTouchListener(this);
     }
 
     @Override
@@ -171,9 +174,7 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
     }
 
     private void continueSignup() {
-        String usrName = editUserName.getText().toString();
-        String password = editPassword.getText().toString();
-        String first_name = editName.getText().toString();
+
         if (CommonUtils.isNetworkAvailable(context)) {
             HashMap<String, String> hm = new HashMap<>();
             hm.put("name", editName.getText().toString().trim());
@@ -202,10 +203,13 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
             JSONObject jsonObject = jsonParser.getObjectData();
             try {
                 String apikey = jsonObject.getString("data");
+
+                SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.CLIENT_ID, apikey);
                 Bundle bundle = new Bundle();
                 bundle.putString("apikey", apikey);
                 Logger.info(TAG, "sent api key===::" + apikey);
                 startNewActivity(currentActivity, OtpEnterActivity.class, bundle, false, 0, false, 0);
+                finish();
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -219,5 +223,11 @@ public class UserRegisterActivity extends BaseActivity implements AdapterView.On
     @Override
     public void onErrorResponse(ApiURLS.ApiId apiId, String errorData, int responseCode) {
         Logger.error(TAG, "" + errorData);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        toHideKeyboard();
+        return false;
     }
 }

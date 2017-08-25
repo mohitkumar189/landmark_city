@@ -41,6 +41,9 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
     private FriendsAdapter friendsAdapter;
     private FriendSuggestionAdapter suggestionAdapter;
     private int pos = -1;
+    String imageUrl;
+    String greetingId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +51,10 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
         startMyACtivtiy();
         getFriendsList();
         getFriendsSuggestions();
+
+        imageUrl = getIntent().getStringExtra("greetingImage");
+         greetingId = getIntent().getStringExtra("greetingId");
+
     }
 
     @Override
@@ -234,6 +241,9 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
                 suggestions.remove(position);
                 suggestionAdapter.notifyDataSetChanged();
                 break;
+            case 40 :
+
+                //hit api
         }
     }
 

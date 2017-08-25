@@ -8,6 +8,7 @@ import android.view.View;
 
 import in.squareiapp.landmarkcity.R;
 import in.squareiapp.landmarkcity.activities.useraccesspackage.LoginActivity;
+import in.squareiapp.landmarkcity.activities.useraccesspackage.OtpEnterActivity;
 import in.squareiapp.landmarkcity.interfaces.AppConstants;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
@@ -28,7 +29,9 @@ public class SplashActivity extends BaseActivity {
                 System.out.println(TAG);
 
                 boolean loginStatus = SharedPrefUtils.getInstance(context).getBoolean(SharedPrefUtils.LOGIN_STATUS);
-                if (loginStatus) {
+                if(SharedPrefUtils.getInstance(context).getBoolean(SharedPrefUtils.OTP_STATUS)){
+                    startNewActivity(currentActivity, OtpEnterActivity.class);
+                }else if (loginStatus) {
                     startNewActivity(currentActivity, UserDashboardActivity.class);
                 } else {
                     startNewActivity(currentActivity, LoginActivity.class);

@@ -25,11 +25,13 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 
 import in.squareiapp.landmarkcity.R;
+import in.squareiapp.landmarkcity.activities.featuresactivities.FriendsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.GreetingsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.MapActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.MusicActivity;
@@ -51,7 +53,10 @@ import in.squareiapp.landmarkcity.utils.GPSTracker;
 import in.squareiapp.landmarkcity.utils.JsonParser;
 import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
+import in.squareiapp.landmarkcity.utils.NetworkRequestHandler2;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
+
+import static in.squareiapp.landmarkcity.utils.ApiURLS.ApiId.UPDATE_WEATHER;
 
 public class UserDashboardActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, NetworkResponseListener {
     private NavigationView nav_view;
@@ -63,6 +68,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
     private ImageView ivSOS;
     private GPSTracker gps;
     private final String TAG = getClass().getSimpleName();
+    private TextView tvTemp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +76,15 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         setContentView(R.layout.activity_user_dashboard);
         startMyACtivtiy();
         askForPermission();
+        updateweather();
+    }
+
+    private void updateweather() {
+
+        gps = new GPSTracker(UserDashboardActivity.this);
+        NetworkRequestHandler2 networkRequestHandler = new NetworkRequestHandler2(context, this);
+        String url = ApiURLS.UPDATE_WEATHER + "?lat=" + gps.getLatitude() + "&long=" + gps.getLatitude();
+        networkRequestHandler.getStringResponse(url, UPDATE_WEATHER, ApiURLS.REQUEST_GET, null, null, true);
     }
 
     private String getStringLocation() {
@@ -112,6 +127,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         viewpager = (ViewPager) findViewById(R.id.viewpager);
         toolbarTitle = (TextView) findViewById(R.id.toolbarTitle);
         ivSOS = (ImageView) findViewById(R.id.ivSOS);
+        tvTemp = (TextView) findViewById(R.id.tvTemp);
         tabs.setupWithViewPager(viewpager);
         setupViewPager();
         createTabIcons();
@@ -165,7 +181,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
             case R.id.nav_friend:
                 drawer_layout.closeDrawer(nav_view);
 
-                startNewActivity(currentActivity, UserProfileActivity.class);
+                startNewActivity(currentActivity, FriendsActivity.class);
                 break;
             case R.id.nav_chat:
                 drawer_layout.closeDrawer(nav_view);
@@ -410,6 +426,29 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 showToast(message, false);
             }
         }
+        //jsonParser.getObjectData().getString("currently")
+
+        if (apiId == ApiURLS.ApiId.UPDATE_WEATHER) {
+            JsonParser jsonParser = new JsonParser(stringResponse);
+            int success = jsonParser.getSuccess();
+            try {
+
+                Double s = ((Double.parseDouble(jsonParser.getObjectData().getJSONObject("currently").getString("temperature"))-32)*(0.5556));
+                int temprature= s.intValue();
+                tvTemp.setText(""+temprature);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            int error = jsonParser.getError();
+            String message = jsonParser.getMessage();
+            if (success == 1 && error == 0) {
+                showToast(message, false);
+            } else {
+                showToast(message, false);
+            }
+        }
+
     }
 
     @Override

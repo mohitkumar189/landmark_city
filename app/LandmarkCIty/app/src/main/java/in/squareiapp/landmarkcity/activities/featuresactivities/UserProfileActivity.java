@@ -3,10 +3,12 @@ package in.squareiapp.landmarkcity.activities.featuresactivities;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import com.squareup.picasso.Picasso;
 
@@ -25,13 +27,14 @@ import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler2;
 import in.squareiapp.landmarkcity.utils.SharedPrefUtils;
 
-public class UserProfileActivity extends BaseActivity implements NetworkResponseListener {
+public class UserProfileActivity extends BaseActivity implements NetworkResponseListener, View.OnTouchListener {
 
     private final String TAG = getClass().getSimpleName();
     private EditText editUserName, editUserEmail, editUserAddress, editLandmark, editZipcode, editState, editCountry, editUserCity, editUserMobile, editGender;
     private Button btnSubmit;
     private ImageView ivBack, ivProfile;
     private boolean isPut = false;
+    private ScrollView parentLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +62,7 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
         editUserCity = (EditText) findViewById(R.id.editUserCity);
         editUserMobile = (EditText) findViewById(R.id.editUserMobile);
         editGender = (EditText) findViewById(R.id.editGender);
-
+        parentLayout = (ScrollView) findViewById(R.id.parentLayout);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
         ivBack = (ImageView) findViewById(R.id.ivBack);
         ivProfile = (ImageView) findViewById(R.id.ivProfile);
@@ -71,6 +74,7 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
         editGender.setOnClickListener(this);
         ivBack.setOnClickListener(this);
         ivProfile.setOnClickListener(this);
+        parentLayout.setOnTouchListener(this);
     }
 
     @Override
@@ -230,5 +234,11 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
     @Override
     public void onErrorResponse(ApiURLS.ApiId apiId, String errorData, int responseCode) {
 
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        toHideKeyboard();
+        return false;
     }
 }

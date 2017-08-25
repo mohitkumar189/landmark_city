@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/background"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
     <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/background"
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainLayout"
             android:orientation="vertical"
             android:paddingLeft="@dimen/dp40"
             android:paddingRight="@dimen/dp40">
@@ -61,7 +59,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center"
-                    android:hint="*"
+                    android:hint="@string/star_"
                     android:visibility="gone" />
 
                 <EditText
@@ -72,7 +70,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/edit_text_background"
                     android:gravity="center"
-                    android:hint="*"
+                    android:hint="@string/star_"
                     android:visibility="gone" />
 
                 <EditText
@@ -106,7 +104,7 @@
                 android:layout_below="@+id/relativeLogin"
                 android:layout_marginTop="@dimen/dp16"
                 android:background="@color/btn_background"
-                android:text="Verify"
+                android:text="@string/verify_text"
                 android:textColor="@color/white" />
 
             <TextView
@@ -116,10 +114,9 @@
                 android:layout_below="@+id/btnVerify"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/dp12"
-                android:text="Resend"
+                android:text="@string/resend_text"
                 android:textSize="@dimen/font_16" />
 
 
         </RelativeLayout>
     </ScrollView>
-</RelativeLayout>

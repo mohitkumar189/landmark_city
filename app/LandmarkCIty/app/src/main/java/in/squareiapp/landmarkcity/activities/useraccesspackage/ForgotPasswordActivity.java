@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -22,11 +24,12 @@ import in.squareiapp.landmarkcity.utils.JsonParser;
 import in.squareiapp.landmarkcity.utils.Logger;
 import in.squareiapp.landmarkcity.utils.NetworkRequestHandler;
 
-public class ForgotPasswordActivity extends BaseActivity implements NetworkResponseListener {
+public class ForgotPasswordActivity extends BaseActivity implements NetworkResponseListener, View.OnTouchListener {
     private final String TAG = getClass().getSimpleName();
     private EditText editUserName;
     private Button btnResetPassword;
     private TextView textLogin;
+    private ScrollView parentLayout ;
 
 
     @Override
@@ -48,6 +51,7 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
         btnResetPassword = (Button) findViewById(R.id.btnResetPassword);
         textLogin = (TextView) findViewById(R.id.textLogin);
         btnResetPassword.setTypeface(myTypeface);
+        parentLayout = (ScrollView) findViewById(R.id.parentLayout);
 
     }
 
@@ -55,6 +59,8 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
     protected void initListners() {
         textLogin.setOnClickListener(this);
         btnResetPassword.setOnClickListener(this);
+        parentLayout.setOnTouchListener(this);
+
     }
 
     @Override
@@ -129,5 +135,11 @@ public class ForgotPasswordActivity extends BaseActivity implements NetworkRespo
     @Override
     public void onErrorResponse(ApiURLS.ApiId apiId, String errorData, int responseCode) {
         Logger.error(TAG, "" + errorData);
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        toHideKeyboard();
+        return false;
     }
 }
