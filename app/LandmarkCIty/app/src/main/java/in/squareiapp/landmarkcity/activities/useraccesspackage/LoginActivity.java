@@ -64,6 +64,8 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
         ivGoogle = (ImageView) findViewById(R.id.ivGoogle);
         ivTwitter = (ImageView) findViewById(R.id.ivTwitter);
 
+
+
     }
 
     @Override
@@ -129,7 +131,7 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
             hm.put("username", editUserName.getText().toString().trim());
             hm.put("password", editPassword.getText().toString().trim());
 
-            NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_LOGIN_URL, ApiURLS.ApiId.USER_LOGIN_URL, ApiURLS.REQUEST_POST, hm, null, true);
+            NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_LOGIN_URL, ApiURLS.ApiId.USER_LOGIN_URL, ApiURLS.REQUEST_POST, hm, null, false);
         } else {
             showToast(getString(R.string.network_error), false);
         }
@@ -142,18 +144,28 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
 
     @Override
     public void onStringResponse(ApiURLS.ApiId apiId, String stringResponse) {
+
         Logger.error(TAG, "" + stringResponse);
+
         JsonParser jsonParser = new JsonParser(stringResponse);
+
         int success = jsonParser.getSuccess();
         int error = jsonParser.getError();
         String message = jsonParser.getMessage();
+        //starting a service
+
+
         if (success == 1 && error == 0) {
             JSONObject jsonObject = jsonParser.getObjectData();
+
             try {
                 int status = jsonObject.getInt("status");
                 String apikey = jsonObject.getString("apikey");
                 String name = jsonObject.getString("name");
                 String usertype = jsonObject.getString("usertype");
+                String sosNumber = jsonObject.getString("sos");
+                SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.SOS_NUMBER, sosNumber);
+                SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.USER_TYPE, usertype);
                 SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.USER_NAME, name);
                 if (status == 0) {
                     Bundle bundle = new Bundle();
@@ -166,6 +178,7 @@ public class LoginActivity extends BaseActivity implements NetworkResponseListen
                     SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.CLIENT_ID, apikey);
                     SharedPrefUtils.getInstance(context).putBoolean(SharedPrefUtils.LOGIN_STATUS, true);
                     startNewActivity(currentActivity, UserDashboardActivity.class);
+
                     finish();
                 }
             } catch (JSONException e) {

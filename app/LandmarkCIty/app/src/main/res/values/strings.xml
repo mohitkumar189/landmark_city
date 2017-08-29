@@ -15,7 +15,7 @@
     <string name="error_invalid_user_name">invalid user name</string>
     <string name="enterFirstName">name can not be empty</string>
     <string name="error_first_name">name can not be empty</string>
-    <string name="network_error">network error</string>
+    <string name="network_error">No Internet Connection, Please Connect to Internet</string>
     <string name="loginText">Sign in</string>
     <string name="search_hint">Search here...</string>
     <string name="register_now_text">Register now</string>
@@ -24,4 +24,14 @@
     <string name="star_">*</string>
     <string name="otp_error">Please Enter OTP</string>
     <string name="greetings_title_text">Greetings</string>
+    <string name="add_a_caption_text">Add a Caption</string>
+    <string name="send_button">SEND</string>
+    <string name="greetings_sent_msg">Greetings sent</string>
+    <string name="temprature_text">temperature</string>
+    <string name="checkable">checkAble</string>
+    <string name="parent">PARENT</string>
+    <string name="student">STUDENT</string>
+    <string name="partner">PARTNER</string>
+    <string name="vendor">VENDOR</string>
+    <string name="admin">ADMIN</string>
 </resources>

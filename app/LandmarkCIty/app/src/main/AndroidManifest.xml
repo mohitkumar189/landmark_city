@@ -7,9 +7,12 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission
         android:name="com.app.schoolapp.permission.MAPS_RECEIVE"
         android:protectionLevel="signature" />
+
+
 
     <application
         android:name=".application.LandmarkCityApplication"
@@ -50,6 +53,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan|stateAlwaysHidden" />
+
         <activity
             android:name=".activities.useraccesspackage.ForgotPasswordActivity"
             android:screenOrientation="portrait"
@@ -97,6 +101,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".activities.featuresactivities.SendGreetingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
+        <activity
             android:name=".activities.featuresactivities.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
@@ -132,6 +141,7 @@
         <activity android:name=".activities.StoresListActivity">
 
         </activity>
+        <service android:name=".service.LocationService" />
     </application>
 
 </manifest>

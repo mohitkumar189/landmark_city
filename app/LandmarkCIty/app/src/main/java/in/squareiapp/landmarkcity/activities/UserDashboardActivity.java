@@ -17,11 +17,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +40,6 @@ import in.squareiapp.landmarkcity.activities.featuresactivities.MapActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.MusicActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.RewardsActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.SettingActivity;
-import in.squareiapp.landmarkcity.activities.featuresactivities.ShareLocationActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.StoreActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.UserChatActivity;
 import in.squareiapp.landmarkcity.activities.featuresactivities.UserProfileActivity;
@@ -48,6 +50,7 @@ import in.squareiapp.landmarkcity.fragments.NoticeFragment;
 import in.squareiapp.landmarkcity.fragments.UpdatesFragment;
 import in.squareiapp.landmarkcity.interfaces.NetworkResponseListener;
 import in.squareiapp.landmarkcity.utils.ApiURLS;
+import in.squareiapp.landmarkcity.utils.AppConstants;
 import in.squareiapp.landmarkcity.utils.CommonUtils;
 import in.squareiapp.landmarkcity.utils.GPSTracker;
 import in.squareiapp.landmarkcity.utils.JsonParser;
@@ -77,7 +80,10 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         startMyACtivtiy();
         askForPermission();
         updateweather();
+
+
     }
+
 
     private void updateweather() {
 
@@ -129,6 +135,8 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
         ivSOS = (ImageView) findViewById(R.id.ivSOS);
         tvTemp = (TextView) findViewById(R.id.tvTemp);
         tabs.setupWithViewPager(viewpager);
+
+
         setupViewPager();
         createTabIcons();
         tabs.addOnTabSelectedListener(this);
@@ -138,6 +146,37 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
     protected void initListners() {
         nav_view.setItemIconTintList(null);
         nav_view.setNavigationItemSelectedListener(this);
+        ivSOS.setOnClickListener(this);
+
+        Switch item1 = (Switch) nav_view.getMenu().findItem(R.id.nav_share_location).getActionView().findViewById(R.id.locationOnOFF);
+
+        item1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // do something, the isChecked will be
+                // true if the switch is in the On position
+                if (isChecked) {
+                    sendLocation();
+                }
+            }
+        });
+
+
+        if (SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.USER_TYPE).equalsIgnoreCase(getString(R.string.parent))) {
+
+            nav_view.getMenu().findItem(R.id.nav_share_location).setVisible(false);
+
+        } else if (SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.USER_TYPE).equalsIgnoreCase(getString(R.string.student))) {
+
+            nav_view.getMenu().findItem(R.id.nav_share_location_parent).setVisible(false);
+
+        } else if ((SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.USER_TYPE).equalsIgnoreCase(getString(R.string.partner)))
+                || (SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.USER_TYPE).equalsIgnoreCase(getString(R.string.vendor)))
+                || (SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.USER_TYPE).equalsIgnoreCase(getString(R.string.admin)))) {
+
+            nav_view.getMenu().findItem(R.id.nav_share_location_parent).setVisible(false);
+            nav_view.getMenu().findItem(R.id.nav_share_location).setVisible(false);
+        }
+
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -155,20 +194,49 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 } else {
                     drawer_layout.openDrawer(GravityCompat.START);
                 }
+
             }
         });
-        ivSOS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDialog();
-            }
-        });
+
+
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        sendLocation();
+    }
+
+    private void sendLocation() {
+
+        if (CommonUtils.isNetworkAvailable(context)) {
+
+            HashMap<String, String> hm = new HashMap<>();
+            hm.put(AppConstants.LATITUDE, String.valueOf(gps.getLatitude()));
+            hm.put(AppConstants.LONGITUDE, String.valueOf(gps.getLongitude()));
+            hm.put(AppConstants.CLIENT_ID, SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
+            NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.SHARE_LOCATION, ApiURLS.ApiId.SHARE_LOCATION, ApiURLS.REQUEST_POST, hm, null, false);
+
+        } else {
+            showToast(getString(R.string.network_error), false);
+        }
     }
 
     @Override
     protected void initToolbar() {
         // setTitle(R.string.app_name);
         toolbarTitle.setText(R.string.app_name);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+
+
+        return true;
     }
 
     @Override
@@ -208,10 +276,6 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 drawer_layout.closeDrawer(nav_view);
                 startNewActivity(currentActivity, GreetingsActivity.class);
                 break;
-            case R.id.nav_share_location:
-                drawer_layout.closeDrawer(nav_view);
-                startNewActivity(currentActivity, ShareLocationActivity.class);
-                break;
             case R.id.nav_setting:
                 drawer_layout.closeDrawer(nav_view);
                 startNewActivity(currentActivity, SettingActivity.class);
@@ -233,6 +297,17 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
                 }
             }
         });*/
+
+        switch (v.getId()) {
+
+            case R.id.ivSOS:
+
+                showDialog();
+
+                break;
+        }
+
+
     }
 
 
@@ -348,6 +423,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
     }
 
     public void showDialog() {
+
         final Dialog dialog = new Dialog(currentActivity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
@@ -356,13 +432,15 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
 
         TextView tvHealth = (TextView) dialog.findViewById(R.id.tvHealth);
         TextView tvSecurity = (TextView) dialog.findViewById(R.id.tvSecurity);
+        ((TextView) dialog.findViewById(R.id.sosNumber)).setText(SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.SOS_NUMBER));
+
 
         tvHealth.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + "123456789"));//change the number
+                callIntent.setData(Uri.parse("tel:" + SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.SOS_NUMBER)));//change the number
                 if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
@@ -377,7 +455,7 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
             @Override
             public void onClick(View view) {
                 Intent callIntent = new Intent(Intent.ACTION_CALL);
-                callIntent.setData(Uri.parse("tel:" + "123456789"));//change the number
+                callIntent.setData(Uri.parse("tel:" + SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.SOS_NUMBER)));//change the number
                 if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     return;
                 }
@@ -433,19 +511,12 @@ public class UserDashboardActivity extends BaseActivity implements TabLayout.OnT
             int success = jsonParser.getSuccess();
             try {
 
-                Double s = ((Double.parseDouble(jsonParser.getObjectData().getJSONObject("currently").getString("temperature"))-32)*(0.5556));
-                int temprature= s.intValue();
-                tvTemp.setText(""+temprature);
+                Double s = ((Double.parseDouble(jsonParser.getObjectData().getJSONObject("currently").getString(getString(R.string.temprature_text))) - 32) * (0.5556));
+                int temprature = s.intValue();
+                tvTemp.setText("" + temprature);
 
             } catch (JSONException e) {
                 e.printStackTrace();
-            }
-            int error = jsonParser.getError();
-            String message = jsonParser.getMessage();
-            if (success == 1 && error == 0) {
-                showToast(message, false);
-            } else {
-                showToast(message, false);
             }
         }
 

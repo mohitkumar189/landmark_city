@@ -51,6 +51,26 @@ public class JsonParser {
         return message;
     }
 
+    public String getUserType() {
+        String message = "";
+        try {
+            message = jsonObject.getString("userType");
+        } catch (JSONException e) {
+            Logger.error(TAG, "Exception in message key ::" + e);
+        }
+        return message;
+    }
+
+    public String getRewardsPoints() {
+        String points = "";
+        try {
+            points = jsonObject.getString("points");
+        } catch (JSONException e) {
+            Logger.error(TAG, "Exception in message key ::" + e);
+        }
+        return points;
+    }
+
     public JSONObject getObjectData() {
         JSONObject data = null;
         try {

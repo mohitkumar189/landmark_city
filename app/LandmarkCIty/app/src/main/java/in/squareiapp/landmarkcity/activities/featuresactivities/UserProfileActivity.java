@@ -130,8 +130,8 @@ public class UserProfileActivity extends BaseActivity implements NetworkResponse
         hm.put("country", editCountry.getText().toString().trim());
         hm.put("zipcode", editZipcode.getText().toString().trim());
         hm.put("gender", editGender.getText().toString().trim());
-        //   hm.put("prof_status",editUserName.getText().toString().trim());
-        //  hm.put("profilepic",editUserName.getText().toString().trim());
+        //hm.put("field4", parentID);
+        hm.put("field5", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.SOS_NUMBER));
         hm.put("phone", editUserMobile.getText().toString().trim());
         hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
 

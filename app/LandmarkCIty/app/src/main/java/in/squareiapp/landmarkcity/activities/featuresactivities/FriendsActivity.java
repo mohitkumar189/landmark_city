@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +26,7 @@ import in.squareiapp.landmarkcity.interfaces.CustomItemClickListener;
 import in.squareiapp.landmarkcity.interfaces.NetworkResponseListener;
 import in.squareiapp.landmarkcity.models.FriendsData;
 import in.squareiapp.landmarkcity.utils.ApiURLS;
+import in.squareiapp.landmarkcity.utils.AppConstants;
 import in.squareiapp.landmarkcity.utils.CommonUtils;
 import in.squareiapp.landmarkcity.utils.JsonParser;
 import in.squareiapp.landmarkcity.utils.Logger;
@@ -41,8 +43,10 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
     private FriendsAdapter friendsAdapter;
     private FriendSuggestionAdapter suggestionAdapter;
     private int pos = -1;
-    String imageUrl;
-    String greetingId;
+    private String imageUrl;
+    private String greetingId;
+    private boolean isGreeting = false ;
+    private TextView textViewSuggestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +56,12 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
         getFriendsList();
         getFriendsSuggestions();
 
-        imageUrl = getIntent().getStringExtra("greetingImage");
-         greetingId = getIntent().getStringExtra("greetingId");
+        if( getIntent().getExtras() != null){
 
+            imageUrl = getIntent().getStringExtra(AppConstants.GREETING_IMAGE);
+            greetingId = getIntent().getStringExtra("greetingId");
+            isGreeting = true;
+        }
     }
 
     @Override
@@ -70,9 +77,11 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
     @Override
     protected void initViews() {
         recyclerFriends = (RecyclerView) findViewById(R.id.recyclerFriends);
-        recyclerSuggestions = (RecyclerView) findViewById(R.id.recyclerSuggestions);
         recyclerFriends.setLayoutManager(new LinearLayoutManager(context));
-        recyclerSuggestions.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+      textViewSuggestions = (TextView) findViewById(R.id.textViewSuggestions);
+        if (!isGreeting) textViewSuggestions.setVisibility(View.GONE);
+        if (!isGreeting) recyclerSuggestions = (RecyclerView) findViewById(R.id.recyclerSuggestions);
+        if (!isGreeting) recyclerSuggestions.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
     }
 
     @Override
@@ -214,8 +223,10 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
                     e.printStackTrace();
                 }
             }
-            recyclerSuggestions.setAdapter(suggestionAdapter);
-            suggestionAdapter.notifyDataSetChanged();
+            if (!isGreeting) {
+                recyclerSuggestions.setAdapter(suggestionAdapter);
+                suggestionAdapter.notifyDataSetChanged();
+            }
         }
     }
 
@@ -224,8 +235,16 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
         Intent intent = new Intent(currentActivity, ProfileActivity.class);
         switch (flag) {
             case 1:
+                if (isGreeting){
+                    Intent intent1 = new Intent(currentActivity,SendGreetingActivity.class);
+                    intent1.putExtra(AppConstants.FRIEND_ID, friends.get(position).getUserid());
+                    intent1.putExtra(AppConstants.GREETING_IMAGE, imageUrl);
+                    intent1.putExtra("FriendsName", friends.get(position).getName());
+                    startActivity(intent1);
+                }else {
                 intent.putExtra("clientid", friends.get(position).getUserid());
                 startActivity(intent);
+                }
                 break;
             case 10:
                 intent.putExtra("clientid", suggestions.get(position).getUserid());
@@ -241,9 +260,7 @@ public class FriendsActivity extends BaseActivity implements NetworkResponseList
                 suggestions.remove(position);
                 suggestionAdapter.notifyDataSetChanged();
                 break;
-            case 40 :
 
-                //hit api
         }
     }
 

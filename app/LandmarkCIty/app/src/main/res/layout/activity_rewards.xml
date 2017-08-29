@@ -25,5 +25,38 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <in.squareiapp.landmarkcity.custom_views.AppTextView
+        android:id="@+id/textViewPoints"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/point_text_view_background"
+        android:textColor="@color/text_dark"
+        android:textSize="@dimen/font_16" />
+
+    <in.squareiapp.landmarkcity.custom_views.AppTextView
+        android:id="@+id/recent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp20"
+        android:background="#ecebeb"
+        android:lines="1"
+        android:padding="@dimen/dp8"
+        android:text="Recent"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_16" />
+
+    <ListView
+        android:id="@+id/rewardsListView"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+
 
 </LinearLayout>

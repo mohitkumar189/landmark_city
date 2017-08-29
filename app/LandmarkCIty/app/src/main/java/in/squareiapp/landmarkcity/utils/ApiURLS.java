@@ -19,7 +19,9 @@ public class ApiURLS {
     public static final String USER_LOGIN_URL = BASE_URL + "login"; ///done
     public static final String USER_RESET_PASSWORD = BASE_URL + "login/forgot";
     public static final String RESET_PASSWORD = BASE_URL + "login/reset";
-    public static final String USER_VERIFY_OTP = BASE_URL + "login/enterotp"; //done
+    public static final String USER_VERIFY_OTP = BASE_URL + "login/verifyotp"; //done
+    public static final String SEND_GREETINGS= BASE_URL + "greeting/send"; //done
+    public static final String SHARE_LOCATION = BASE_URL + "tracker/send"; //done
     public static final String USER_RESEND_OTP = BASE_URL + "login/resendotp"; //done
     public static final String USERS_POST = BASE_URL + "friend/posts";
     public static final String POST_LIKE = BASE_URL + "friend/posts/like";
@@ -30,6 +32,7 @@ public class ApiURLS {
     public static final String UPDATE_WEATHER = BASE_URL + "update/weather";
 
     public static final String GET_FRIENDS = BASE_URL + "friend";
+    public static final String GET_REWARDS_POINTS = BASE_URL + "rewards";
     public static final String GET_FRIENDS_REQUESTS = BASE_URL + "friend/requests";
     public static final String GET_FRIENDS_SUGGESTIONS = BASE_URL + "friend/suggestions";
     public static final String SEND_FRIEND_REQUEST = BASE_URL + "friend/reqsend";
@@ -40,9 +43,8 @@ public class ApiURLS {
     public static final String SEND_SOS = BASE_URL + "sos/push";
 
     public enum ApiId {
-        USER_REGISTER_URL, USER_LOGIN_URL, USER_RESET_PASSWORD, RESET_PASSWORD, USER_VERIFY_OTP,
-        USER_RESEND_OTP, USERS_POST, POST_LIKE, GET_NOTICE, GET_NEWS, GET_UPDATES, GET_PROFILE,UPDATE_WEATHER,
-
-        GET_FRIENDS,GET_FRIENDS_SUGGESTIONS,SEND_FRIEND_REQUEST,GET_STORES_CATEGORIES,GET_GREETINGS,GET_STORES,SEND_SOS,SEARCH_STORES
+        USER_REGISTER_URL, USER_LOGIN_URL, USER_RESET_PASSWORD, RESET_PASSWORD, USER_VERIFY_OTP,SEND_GREETINGS,SHARE_LOCATION,
+        USER_RESEND_OTP, USERS_POST, POST_LIKE, GET_NOTICE, GET_NEWS, GET_UPDATES, GET_PROFILE,UPDATE_WEATHER,GET_FRIENDS_REQUESTS,
+        GET_FRIENDS,GET_REWARDS_POINTS,GET_FRIENDS_SUGGESTIONS,SEND_FRIEND_REQUEST,GET_STORES_CATEGORIES,GET_GREETINGS,GET_STORES,SEND_SOS,SEARCH_STORES,
     }
 }

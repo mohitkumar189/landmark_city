@@ -131,7 +131,7 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
             hm.put("otp", editDigit1.getText().toString().trim());
             hm.put("client_id", SharedPrefUtils.getInstance(context).getString(SharedPrefUtils.CLIENT_ID));
 
-            NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_VERIFY_OTP, ApiURLS.ApiId.USER_VERIFY_OTP, ApiURLS.REQUEST_POST, hm, null, true);
+            NetworkRequestHandler.getInstance(context, this).getStringResponse(ApiURLS.USER_VERIFY_OTP, ApiURLS.ApiId.USER_VERIFY_OTP, ApiURLS.REQUEST_POST, hm, null, false);
         } else {
             showToast(getString(R.string.network_error), false);
         }
@@ -317,10 +317,13 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
 
         //////////////////////checking for the resent otp///////////////////////////
         if (apiId == ApiURLS.ApiId.USER_RESEND_OTP) {
+
             JsonParser jsonParser = new JsonParser(stringResponse);
             int success = jsonParser.getSuccess();
             int error = jsonParser.getError();
             String message = jsonParser.getMessage();
+
+
             if (success == 1 && error == 0) {
                 showToast(message, false);
 
@@ -334,6 +337,9 @@ public class OtpEnterActivity extends BaseActivity implements View.OnFocusChange
             int success = jsonParser.getSuccess();
             int error = jsonParser.getError();
             String message = jsonParser.getMessage();
+            String userType = jsonParser.getUserType();
+            SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.USER_TYPE, userType);
+
             if (success == 1 && error == 0) {
                 showToast(message, false);
                 SharedPrefUtils.getInstance(context).putString(SharedPrefUtils.CLIENT_ID, apikey);

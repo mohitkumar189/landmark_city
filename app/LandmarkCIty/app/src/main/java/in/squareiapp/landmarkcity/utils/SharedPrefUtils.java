@@ -11,6 +11,8 @@ import in.squareiapp.landmarkcity.interfaces.AppConstants;
 
 public class SharedPrefUtils {
 
+    public static final String USER_TYPE = "USER_TYPE" ;
+    public static final String SOS_NUMBER = "SOS_NUMBER";
     private static SharedPrefUtils sharedPreferenceUtils;
     private static SharedPreferences sharedPreferences;
     private static Context context;

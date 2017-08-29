@@ -35,6 +35,8 @@ public class LandmarkCityApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mInstance = this;
+
+        //startService(new Intent(this , LocationService.class));
     }
 
     @Override

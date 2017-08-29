@@ -52,6 +52,21 @@ public class CommonUtils {
         return isValid;
     }
 
+    public static String getFormattedDate(String dateString) {
+        String formattedString = "";
+        try {
+            // String source = "2013-02-19T11:20:16.393Z";
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = null;
+            date = formatter.parse(dateString);
+            SimpleDateFormat formatterNew = new SimpleDateFormat("dd MMM yyyy");
+            formattedString = formatterNew.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return formattedString;
+    }
+
     public static String getTimeFromDateString(String dateString) {
         String formattedString = "";
         try {
